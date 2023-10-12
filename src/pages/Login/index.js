@@ -35,7 +35,7 @@ export const Login = () => {
       input_error: 'Некорректный пароль'
     }),
 
-    ButtonSubmit: ButtonSubmit({buttonSubmit: 'Авторизоваться'}),
-    ButtonLink: ButtonLink({textLink: 'Нет аккаунта?'})
+    ButtonSubmit: ButtonSubmit({buttonTitle: 'Авторизоваться'}),
+    ButtonLink: ButtonLink({textLink: 'Нет аккаунта?', to: '/signin'})
     })
 }

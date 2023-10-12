@@ -1,8 +1,8 @@
 import Handlebars from "handlebars";
 
-import { tmpl } from "../ButtonSubmit/buttonSubmit.tmpl"
+import { tmpl } from "./buttonSubmit.tmpl"
 
-export const ButtonSubmit = () => {
+export const ButtonSubmit = ({buttonTitle}) => {
 
-  return Handlebars.compile(tmpl)({buttonTitle:'Авторизоваться'})
+  return Handlebars.compile(tmpl)({buttonTitle})
 }

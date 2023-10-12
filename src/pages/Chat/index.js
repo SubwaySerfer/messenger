@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 
-import { tmpl } from "./chat.tmpl";
+import { tmpl } from "./chatPage.tmpl";
 
 
 export const Chat = () => {
