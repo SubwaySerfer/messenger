@@ -1,2 +1,2 @@
 export const tmpl = `
-<h1>chat</h1>`
+<h1 class="test">chat</h1>`
