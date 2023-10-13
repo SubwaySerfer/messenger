@@ -5,12 +5,11 @@ export const tmpl = `
 {{{SearchInput}}}
 </div>
 
-<div class="chat-sidebar__dialogs">
-<ul>
+<ul class="chat-sidebar__dialogs">
+
 {{{ChatBlock}}}
 
 </ul>
-</div>
 </div>
 `
 
