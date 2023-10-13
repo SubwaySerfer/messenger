@@ -5,7 +5,7 @@ import { Main} from './pages/Main'
 import { NotFound } from './pages/NotFound'
 import { Login } from './pages/Login'
 import { Signin } from './pages/Signin'
-import { Chat } from './pages/Chat'
+import { Chat } from './pages/Chats'
 
 const ROUTES = {
   '/not-found': NotFound(),
