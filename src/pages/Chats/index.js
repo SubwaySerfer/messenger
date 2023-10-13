@@ -6,7 +6,7 @@ import { ChatField } from "../../components/ChatField";
 
 
 
-export const Chat = () => {
+export const Chats = () => {
   return Handlebars.compile(tmpl)({
     ChatSidebar: ChatSidebar({}),
     ChatField: ChatField({})
