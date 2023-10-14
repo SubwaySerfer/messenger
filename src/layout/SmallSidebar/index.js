@@ -2,6 +2,6 @@ import Handlebars from "handlebars";
 
 import { tmpl } from "./smallSidebar.tmpl";
 
-export const SmallSidebar = () =>{
-  return Handlebars.compile(tmpl)({})
+export const SmallSidebar = ({ arrowLink }) =>{
+  return Handlebars.compile(tmpl)({ arrowLink })
 }

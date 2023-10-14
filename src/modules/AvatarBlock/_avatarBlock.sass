@@ -1,6 +1,8 @@
 .avatar-block
   @extend %flex-col
   gap: 2.1rem
+  &[showName='false']
+    margin-bottom: 3.7rem
   &__img
     width: 13rem
     height: 13rem
@@ -14,3 +16,5 @@
     font-style: normal
     font-weight: 600
     line-height: 1.6rem
+    &[showName='false']
+      display: none

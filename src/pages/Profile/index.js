@@ -3,14 +3,14 @@ import Handlebars from "handlebars";
 import { tmpl } from "./profile.tmpl";
 
 import { SmallSidebar } from "../../layout/SmallSidebar";
-import { EditorData } from "../../layout/EditorData";
-import { EditorButtons } from "../../layout/EditorButtons";
-import { AvatarBlock } from "../../layout/AvatarBlock";
+import { EditorData } from "../../modules/EditorData";
+import { EditorButtons } from "../../modules/EditorButtons";
+import { AvatarBlock } from '../../modules/AvatarBlock'
 
 export const Profile = () =>{
   return Handlebars.compile(tmpl)({
-    SmallSidebar: SmallSidebar({}),
-    AvatarBlock: AvatarBlock({nameProfile: 'Sasha',avatarPath: 'assets/images/main-avatar.jpg'}),
+    SmallSidebar: SmallSidebar({ arrowLink: '/chats' }),
+    AvatarBlock: AvatarBlock({nameProfile: 'Иван',avatarPath: 'assets/images/main-avatar.jpg'}),
     EditorData: EditorData({}),
     EditorButtons: EditorButtons({}),
   })
