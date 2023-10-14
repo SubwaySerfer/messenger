@@ -3,6 +3,8 @@ import Handlebars from "handlebars";
 import { tmpl } from "./editorButtons.tmpl";
 
 import { ButtonLink } from '../../components/ButtonLink'
+import { LineHelper } from "../../components/LineHelper";
+
 
 export const EditorButtons = () => {
   return Handlebars.compile(tmpl)({
@@ -16,6 +18,7 @@ export const EditorButtons = () => {
       textLink: 'Выйти',
       exitMode: 'true',
     }),
+    LineHelper: LineHelper({})
 
   })
 }

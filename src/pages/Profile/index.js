@@ -3,7 +3,7 @@ import Handlebars from "handlebars";
 import { tmpl } from "./profile.tmpl";
 
 import { SmallSidebar } from "../../layout/SmallSidebar";
-import { EditorData } from "../../components/EditorData";
+import { EditorData } from "../../layout/EditorData";
 import { EditorButtons } from "../../layout/EditorButtons";
 import { AvatarBlock } from "../../layout/AvatarBlock";
 

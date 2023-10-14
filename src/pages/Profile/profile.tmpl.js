@@ -1,11 +1,11 @@
 export const tmpl = `
 <div class="profile-wrapper">
-{{{SmallSidebar}}}
+{{{ SmallSidebar }}}
 
 <div class="profile-wrapper__content">
-{{{AvatarBlock}}}
-{{{EditorData}}}
-{{{EditorButtons}}}
+{{{ AvatarBlock }}}
+{{{ EditorData }}}
+{{{ EditorButtons }}}
 </div>
 
 </div>

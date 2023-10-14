@@ -1,9 +1,11 @@
 export const tmpl = `
 <div class="editor-buttons">
 {{{ChangeData}}}
-<span class="editor-buttons__helper-line"></span>
+{{{LineHelper}}}
+
 {{{ChangePassword}}}
-<span class="editor-buttons__helper-line"></span>
+{{{LineHelper}}}
+
 {{{ExitButton}}}
 </div>
 `
