@@ -1,2 +1,2 @@
 export const tmpl = `
-<div>teesttt!!</div>`
+<div>Data!</div>`

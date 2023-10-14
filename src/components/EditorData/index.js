@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 
-import { tmpl } from "./editor.tmpl";
+import { tmpl } from "./editorData.tmpl";
 
-export const Editor = () =>{
+export const EditorData = () =>{
   return Handlebars.compile(tmpl)({})
 }
