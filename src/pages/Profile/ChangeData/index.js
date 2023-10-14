@@ -3,7 +3,7 @@ import Handlebars from "handlebars";
 import { tmpl } from "./changeData.tmpl";
 
 import { SmallSidebar } from "../../../layout/SmallSidebar";
-import { EditorData } from "../../../modules/EditorData";
+import { DinamicData } from "../../../modules/EditorData/DinamicData";
 import { AvatarBlock } from "../../../modules/AvatarBlock";
 import { ButtonSubmit } from '../../../components/ButtonSubmit'
 
@@ -15,7 +15,7 @@ export const ProfileChangeData = () =>{
       avatarPath: 'assets/images/main-avatar.jpg',
       showName: 'false'
     }),
-    EditorData: EditorData({}),
+    DinamicData: DinamicData({}),
     ButtonSubmit: ButtonSubmit({buttonTitle: 'Сохранить', linkPath: '/profile'}),
   })
 }

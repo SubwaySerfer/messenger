@@ -2,8 +2,8 @@ import Handlebars from "handlebars";
 
 import { tmpl } from "./editorData.tmpl";
 
-import { ProfileString } from '../../components/ProfileString'
-import { LineHelper } from '../../components/LineHelper'
+import { ProfileString } from '../../../components/ProfileString'
+import { LineHelper } from '../../../components/LineHelper'
 
 
 export const EditorData = () =>{

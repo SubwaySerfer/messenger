@@ -3,7 +3,7 @@ export const tmpl = `<div class="profile-wrapper">
 
 <div class="profile-wrapper__content">
 {{{ AvatarBlock }}}
-{{{ EditorData }}}
+{{{ DinamicData }}}
 
 {{{ ButtonSubmit }}}
 </div>
