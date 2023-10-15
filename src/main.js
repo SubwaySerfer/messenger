@@ -9,6 +9,9 @@ import { Login } from './pages/Login'
 import { Signin } from './pages/Signin'
 import { Chats } from './pages/Chats'
 
+import { Page404 } from './pages/Error/page404'
+import { Page500 } from './pages/Error/Page500'
+
 
 const ROUTES = {
   '/not-found': NotFound(),
@@ -20,6 +23,10 @@ const ROUTES = {
   '/login': Login(),
   '/signin': Signin(),
   '/chats': Chats(),
+
+  '/404': Page404(),
+  '/500': Page500(),
+
 }
 
 window.addEventListener('DOMContentLoaded', ()=>{
