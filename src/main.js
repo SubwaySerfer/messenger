@@ -7,7 +7,7 @@ import { Login } from './pages/Login'
 import { Signin } from './pages/Signin'
 import { Chats } from './pages/Chats'
 
-import { Page404 } from './pages/Error/page404'
+import { Page404 } from './pages/Error/Page404'
 import { Page500 } from './pages/Error/Page500'
 
 
