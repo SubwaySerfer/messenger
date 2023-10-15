@@ -11,11 +11,13 @@ export const PasswordData = () =>{
 
     OldPasInput: ProfileInput({
       inputName: 'Старый пароль',
-      inputPlaceholder: '•••••••••'
+      inputPlaceholder: '•••••••••',
+      input_name: 'oldPassword'
     }),
     NewPasInput: ProfileInput({
       inputName: 'Новый пароль',
-      inputPlaceholder: '•••••••••••'
+      inputPlaceholder: '•••••••••••',
+      input_name: 'newPassword'
     }),
     RepeatNewPasInput: ProfileInput({
       inputName: 'Повторите новый пароль',

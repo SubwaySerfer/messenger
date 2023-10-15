@@ -19,7 +19,7 @@ export const ProfileChangePassword = () =>{
     SmallSidebar: SmallSidebar({ arrowLink: '/profile' }),
     AvatarBlock: AvatarBlock({
       nameProfile: 'Иван',
-      avatarPath: 'assets/images/main-avatar.jpg',
+      avatar: 'assets/images/main-avatar.jpg',
       showName: 'false'
     }),
     ButtonSubmit: ButtonSubmit({buttonTitle: 'Сохранить', linkPath: '/profile'}),

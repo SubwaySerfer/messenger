@@ -12,9 +12,3 @@ export const tmpl = `
 </ul>
 </div>
 `
-
-// {{#each chatsData}}
-//   <li>
-//     {{chatName}}
-//   </li>
-// {{/each}}

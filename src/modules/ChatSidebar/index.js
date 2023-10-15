@@ -4,14 +4,15 @@ import { tmpl } from "./ChatSidebar.tmpl";
 
 import { SearchInput } from "../../components/SearchInput";
 import { ChatBlock } from '../../components/ChatBlock'
-import { chatsData } from "./chatsData";
 
 export const ChatSidebar = () => {
   return Handlebars.compile(tmpl)({
-    SearchInput: SearchInput({}),
+    SearchInput: SearchInput({
+      input_name: 'search_input',
+      input_type: 'text'
+    }),
     ChatBlock: ChatBlock({
-      // chatName: 'hello',
-
     })
   })
 }
+

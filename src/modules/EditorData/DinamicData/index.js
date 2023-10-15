@@ -11,30 +11,34 @@ export const DinamicData = () =>{
 
     EmailInput: ProfileInput({
       inputName: 'Почта',
-      inputPlaceholder: 'pochta@yandex.ru'
+      inputPlaceholder: 'pochta@yandex.ru',
+      input_name: 'email'
     }),
     LoginInput: ProfileInput({
       inputName: 'Логин',
-      inputPlaceholder: 'ivanivanov'
+      inputPlaceholder: 'ivanivanov',
+      input_name: 'login'
     }),
     FirstNameInput: ProfileInput({
       inputName: 'Имя',
-      inputPlaceholder: 'Иван'
+      inputPlaceholder: 'Иван',
+      input_name: 'first_name'
     }),
     LastNameInput: ProfileInput({
       inputName: 'Фамилия',
-      inputPlaceholder: 'Иванов'
+      inputPlaceholder: 'Иванов',
+      input_name: 'second_name'
     }),
     NicknameInput: ProfileInput({
       inputName: 'Имя в чате',
-      inputPlaceholder: 'Иван'
+      inputPlaceholder: 'Иван',
+      input_name: 'display_name'
     }),
     PhoneInput: ProfileInput({
       inputName: 'Телефон',
-      inputPlaceholder: '+7 (909) 967 30 30'
+      inputPlaceholder: '+7 (909) 967 30 30',
+      input_name: 'phone'
     }),
-
-
 
     LineHelper: LineHelper({})
   })
