@@ -4,3 +4,4 @@ export const tmpl = `
  <h2 class="error-block__description">{{ errorDescription }}</h2>
  {{{ ButtonLink }}}
  </div> `
+ 

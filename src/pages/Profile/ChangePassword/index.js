@@ -25,15 +25,5 @@ export const ProfileChangePassword = () =>{
     ButtonSubmit: ButtonSubmit({buttonTitle: 'Сохранить', linkPath: '/profile'}),
     PasswordData: PasswordData({})
 
-    // EmailInput: ProfileInput({
-    //   inputName: 'Почта',
-    //   inputPlaceholder: 'pochta@yandex.ru'
-    // }),
-    // LoginInput: ProfileInput({
-    //   inputName: 'Логин',
-    //   inputPlaceholder: 'ivanivanov'
-    // }),
-
-    // LineHelper: LineHelper({})
   })
 }
