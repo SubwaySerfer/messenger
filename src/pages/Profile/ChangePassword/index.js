@@ -20,20 +20,11 @@ export const ProfileChangePassword = () =>{
     AvatarBlock: AvatarBlock({
       nameProfile: 'Иван',
       avatar: 'assets/images/main-avatar.jpg',
+      imageAlt: 'motorcycle helmet on the car roof.',
       showName: 'false'
     }),
     ButtonSubmit: ButtonSubmit({buttonTitle: 'Сохранить', linkPath: '/profile'}),
     PasswordData: PasswordData({})
 
-    // EmailInput: ProfileInput({
-    //   inputName: 'Почта',
-    //   inputPlaceholder: 'pochta@yandex.ru'
-    // }),
-    // LoginInput: ProfileInput({
-    //   inputName: 'Логин',
-    //   inputPlaceholder: 'ivanivanov'
-    // }),
-
-    // LineHelper: LineHelper({})
   })
 }

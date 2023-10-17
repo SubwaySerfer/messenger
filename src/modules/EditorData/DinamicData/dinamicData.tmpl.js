@@ -1,5 +1,5 @@
 export const tmpl = `
-<div class="editor-data">
+<form class="editor-data">
 {{{ EmailInput }}}
 {{{ LineHelper }}}
 
@@ -17,4 +17,4 @@ export const tmpl = `
 {{{ LineHelper }}}
 
 {{{ PhoneInput }}}
-</div>`
+</form>`

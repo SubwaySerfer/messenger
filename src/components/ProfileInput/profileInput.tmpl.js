@@ -7,5 +7,4 @@ export const tmpl = `
 
 />
 </div>`
-
 // .profile-string__input in file _profileString.sass

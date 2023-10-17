@@ -10,7 +10,11 @@ import { AvatarBlock } from '../../modules/AvatarBlock'
 export const Profile = () =>{
   return Handlebars.compile(tmpl)({
     SmallSidebar: SmallSidebar({ arrowLink: '/chats' }),
-    AvatarBlock: AvatarBlock({nameProfile: 'Иван',avatar: 'assets/images/main-avatar.jpg'}),
+    AvatarBlock: AvatarBlock({
+      nameProfile: 'Иван',
+      avatar: 'assets/images/main-avatar.jpg',
+      imageAlt: 'motorcycle helmet on the car roof.',
+  }),
     EditorData: EditorData({}),
     EditorButtons: EditorButtons({}),
   })
