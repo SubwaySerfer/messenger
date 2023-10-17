@@ -13,6 +13,7 @@ export const ProfileChangeData = () =>{
     AvatarBlock: AvatarBlock({
       nameProfile: 'Иван',
       avatar: 'assets/images/main-avatar.jpg',
+      imageAlt: 'motorcycle helmet on the car roof.',
       showName: 'false'
     }),
     DinamicData: DinamicData({}),

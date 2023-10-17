@@ -1,5 +1,5 @@
 export const tmpl = `
-<div class="editor-data">
+<form class="editor-data">
 {{{ OldPasInput }}}
 {{{ LineHelper }}}
 
@@ -9,4 +9,4 @@ export const tmpl = `
 
 {{{ RepeatNewPasInput }}}
 
-</div>`
+</form>`
