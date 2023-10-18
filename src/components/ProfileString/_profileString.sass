@@ -1,0 +1,22 @@
+.profile-string
+  @extend %flex-row
+  font-family: $main-font
+  font-style: normal
+  font-weight: 500
+  line-height: 1.3rem
+  font-size: 1.3rem
+  width: 51rem
+  justify-content: space-between
+
+  &__name
+    color: $color-black
+
+  &__value
+    color: $color-gray-light
+    text-align: right
+
+  &__input
+    border: none
+    text-align: right
+    &:hover, &:focus
+      outline: none
