@@ -24,10 +24,10 @@ export class LoginForm extends Block<LoginFormProps> {
       input_id: 'login',
       input_name: 'login',
       input_placeholder: 'Имя пользователя',
-      input_min: 3,
-      input_max: 15,
-      required: true,
-      isValid: false,
+      input_min: '3',
+      input_max: '15',
+      required: 'true',
+      isValid: 'false',
       input_error: 'Неверный логин',
       //events: {}, //TODO: add
     });
@@ -38,10 +38,10 @@ export class LoginForm extends Block<LoginFormProps> {
       input_id: 'password',
       input_name: 'password',
       input_placeholder: 'Пароль',
-      input_min: 5,
-      input_max: 15,
-      required: true,
-      isValid: false,
+      input_min: '5',
+      input_max: '15',
+      required: 'true',
+      isValid: 'false',
       input_error: 'Некорректный пароль',
       //events: {}, //TODO
     });

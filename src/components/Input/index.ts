@@ -7,17 +7,14 @@ interface InputProps {
   input_id?: string;
   input_placeholder?: string;
   input_name?: string;
-  required?: boolean;
-  isValid?: boolean;
-  input_min?: number;
-  input_max?: number;
+  required?: string;
+  isValid?: string;
+  input_min?: string;
+  input_max?: string;
   input_error?: string;
 }
-// export const Input = (props) => {
-//   return Handlebars.compile(tmpl)(props)
-// }
 
-export class Input extends Block {
+export class Input extends Block<InputProps> {
   constructor(props: InputProps) {
     super(props);
   }
