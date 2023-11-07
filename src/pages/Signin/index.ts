@@ -2,9 +2,13 @@ import Block from '../../modules/utils/Block';
 import template from './index.hbs';
 import { SigninForm } from './SiginForm';
 
-export class SigninPage extends Block {
-  constructor(title?: string) {
-    super(title);
+interface SiginPageProps {
+  title?: string;
+}
+
+export class SigninPage extends Block<SiginPageProps> {
+  constructor(props: SiginPageProps) {
+    super(props);
   }
 
   init() {

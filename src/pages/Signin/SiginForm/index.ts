@@ -2,9 +2,11 @@ import { ButtonSubmit, ButtonLink, Input } from '../../../components';
 import Block from '../../../modules/utils/Block';
 import template from './index.hbs';
 
-interface SigninFormProps {}
+interface SigninFormProps {
+  title?: string;
+}
 
-export class SigninForm extends Block {
+export class SigninForm extends Block<SigninFormProps> {
   constructor(props: SigninFormProps) {
     super(props);
   }
