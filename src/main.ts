@@ -1,11 +1,12 @@
 import '../src/sass/style.sass';
 import Block from './modules/utils/Block';
-import { loginContext } from './pages';
+import { loginContext, signinContext } from './pages';
 
 // import { Profile } from './pages/Profile';
 // import { ProfileChangeData } from './pages/Profile/ChangeData';
 // import { ProfileChangePassword } from './pages/Profile/ChangePassword';
 import { LoginPage } from './pages/Login';
+import { SigninPage } from './pages/Signin';
 import { Routes } from './router/constants';
 // import { Signin } from './pages/Signin';
 // import { Chats } from './pages/Chats';
@@ -41,6 +42,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   switch (href) {
     case `${origin}${Routes.LoginPage}`:
       render(new LoginPage(loginContext));
+      break;
+    case `${origin}${Routes.SigninPage}`:
+      render(new SigninPage(signinContext));
       break;
   }
 });
