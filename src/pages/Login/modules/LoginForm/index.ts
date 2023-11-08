@@ -1,6 +1,7 @@
 import { ButtonSubmit, ButtonLink, Input } from '../../../../components';
 import Block from '../../../../modules/utils/Block';
 import template from './index.hbs';
+import FormValidator from '../../../../modules/utils/Validator';
 
 interface LoginFormProps {
   // class?: string;
@@ -24,12 +25,12 @@ export class LoginForm extends Block<LoginFormProps> {
       input_id: 'login',
       input_name: 'login',
       input_placeholder: 'Имя пользователя',
-      input_min: '3',
-      input_max: '15',
-      required: 'true',
-      isValid: 'false',
-      input_error: 'Неверный логин',
-      //events: {}, //TODO: add
+      events: {
+        focusout: (event) => {
+          const input = event.target as unknown as HTMLInputElement;
+          new FormValidator(this.element as HTMLElement).checkValidity(input);
+        },
+      },
     });
 
     this.children.InputPassword = new Input({
@@ -38,12 +39,12 @@ export class LoginForm extends Block<LoginFormProps> {
       input_id: 'password',
       input_name: 'password',
       input_placeholder: 'Пароль',
-      input_min: '5',
-      input_max: '15',
-      required: 'true',
-      isValid: 'false',
-      input_error: 'Некорректный пароль',
-      //events: {}, //TODO
+      events: {
+        focusout: (event) => {
+          const input = event.target as unknown as HTMLInputElement;
+          new FormValidator(this.element as HTMLElement).checkValidity(input);
+        },
+      },
     });
 
     this.children.ButtonSubmit = new ButtonSubmit({

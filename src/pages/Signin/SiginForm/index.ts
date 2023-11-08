@@ -1,9 +1,13 @@
 import { ButtonSubmit, ButtonLink, Input } from '../../../components';
 import Block from '../../../modules/utils/Block';
 import template from './index.hbs';
+import FormValidator from '../../../modules/utils/Validator';
 
 interface SigninFormProps {
   title?: string;
+  events?: {
+    submit: (event: HTMLFormElement) => void;
+  };
 }
 
 export class SigninForm extends Block<SigninFormProps> {
@@ -18,11 +22,12 @@ export class SigninForm extends Block<SigninFormProps> {
       input_id: 'email',
       input_name: 'email',
       input_placeholder: 'ivanIvanov@ya.ru',
-      input_min: '4',
-      input_max: '30',
-      required: 'true',
-      isValid: 'false',
-      input_error: 'Введите почту',
+      events: {
+        focusout: (event) => {
+          const input = event.target as unknown as HTMLInputElement;
+          new FormValidator(this.element as HTMLElement).checkValidity(input);
+        },
+      },
     })),
       (this.children.InputLogin = new Input({
         input_type: 'text',
@@ -30,11 +35,12 @@ export class SigninForm extends Block<SigninFormProps> {
         input_id: 'login',
         input_name: 'login',
         input_placeholder: 'Логин',
-        input_min: '3',
-        input_max: '15',
-        required: 'true',
-        isValid: 'false',
-        input_error: 'Слишком короткий логин',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.InputFirstName = new Input({
         input_type: 'text',
@@ -42,11 +48,12 @@ export class SigninForm extends Block<SigninFormProps> {
         input_id: 'firstName',
         input_name: 'first_name',
         input_placeholder: 'Имя',
-        input_min: '3',
-        input_max: '15',
-        required: 'true',
-        isValid: 'false',
-        input_error: 'Слишком короткое имя',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.InputLastName = new Input({
         input_type: 'text',
@@ -54,23 +61,25 @@ export class SigninForm extends Block<SigninFormProps> {
         input_id: 'lastName',
         input_name: 'second_name',
         input_placeholder: 'Фамилия',
-        input_min: '2',
-        input_max: '20',
-        required: 'true',
-        isValid: 'false',
-        input_error: 'Введите фамилию',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.InputPhone = new Input({
         input_type: 'tel',
         input_label: 'Телефон',
         input_id: 'phone',
         input_name: 'phone',
-        input_placeholder: '+7(999) 999 99 99',
-        input_min: '10',
-        input_max: '20',
-        required: 'true',
-        isValid: 'false',
-        input_error: 'Введите номер телефон, пример: 79999999999',
+        input_placeholder: '+7 999 999 99 99',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.InputPassword1 = new Input({
         input_type: 'text',
@@ -78,11 +87,12 @@ export class SigninForm extends Block<SigninFormProps> {
         input_id: 'password',
         input_name: 'password',
         input_placeholder: 'Пароль',
-        input_min: '5',
-        input_max: '15',
-        required: 'true',
-        isValid: 'false',
-        input_error: 'Некорректный пароль',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.InputPassword2 = new Input({
         input_type: 'text',
@@ -90,14 +100,16 @@ export class SigninForm extends Block<SigninFormProps> {
         input_id: 'password_2',
         input_name: 'password_2',
         input_placeholder: 'Пароль',
-        input_min: '5',
-        input_max: '15',
-        required: 'true',
-        isValid: 'false',
-        input_error: 'Пароли не совпадают',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Зарегистрироваться',
+        type: 'submit',
       }));
     this.children.ButtonLink = new ButtonLink({
       textLink: 'Войти',

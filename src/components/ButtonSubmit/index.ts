@@ -4,6 +4,7 @@ import Block from '../../modules/utils/Block';
 interface ButtonSubmitProps {
   buttonTitle?: string;
   linkPath?: string;
+  type?: string;
 }
 export class ButtonSubmit extends Block {
   constructor(props: ButtonSubmitProps) {

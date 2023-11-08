@@ -12,21 +12,6 @@ import { ChatsPage } from './pages/Chats';
 import { Page404 } from './pages/Error/Page404';
 import { Page500 } from './pages/Error/Page500';
 
-// const ROUTES = {
-// '/profile': Profile(),
-// '/profile-change-data': ProfileChangeData(),
-// '/profile-change-password': ProfileChangePassword(),
-
-// '/': LoginPage,
-// '/login': LoginPage,
-
-// '/signin': Signin(),
-// '/chats': Chats(),
-
-// '/404': Page404(),
-// '/500': Page500(),
-// };
-
 function render(component: Block) {
   const root = document.querySelector('#app');
   root?.append(component.getContent()!);

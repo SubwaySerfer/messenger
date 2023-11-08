@@ -1,10 +1,4 @@
 export type ChatProfile = {
-  // imageAlt?: string;
-  // chatImage?: string;
-  // chatName?: string;
-  // isILast?: string;
-  // lastMessage?: string;
-  // messageTime?: string;
   chatImage?: string;
   imageAlt?: string;
   chatName?: string;
