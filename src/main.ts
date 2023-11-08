@@ -9,11 +9,8 @@ import { LoginPage } from './pages/Login';
 import { SigninPage } from './pages/Signin';
 import { Routes } from './router/constants';
 import { ChatsPage } from './pages/Chats';
-// import {}
-// import { Chats } from './pages/Chats';
-
-// import { Page404 } from './pages/Error/Page404';
-// import { Page500 } from './pages/Error/Page500';
+import { Page404 } from './pages/Error/Page404';
+import { Page500 } from './pages/Error/Page500';
 
 // const ROUTES = {
 // '/profile': Profile(),
@@ -59,5 +56,14 @@ window.addEventListener('DOMContentLoaded', async () => {
     case `${origin}${Routes.ChangeData}`:
       render(new ChangeData({}));
       break;
+    case `${origin}${Routes.Page404}`:
+      render(new Page404({}));
+      break;
+    case `${origin}${Routes.Page500}`:
+      render(new Page500({}));
+      break;
+    default:
+      render(new Page404({}));
   }
 });
+//TODO: сделать при валидацию активации пользователя, чтобы нельзя было с 404 попасть на чаты
