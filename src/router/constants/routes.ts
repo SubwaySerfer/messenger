@@ -4,4 +4,5 @@ export enum Routes {
   ChatsPage = '/chats',
   Profile = '/profile',
   ChangePassword = '/profile-change-password',
+  ChangeData = '/profile-change-data',
 }

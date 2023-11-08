@@ -33,7 +33,11 @@ export class StaticData extends Block {
         stringName: 'Телефон',
         stringValue: '+7 (909) 967 30 30',
       })),
-      (this.children.LineHelper = new LineHelper({}));
+      (this.children.LineHelper = new LineHelper({})),
+      (this.children.LineHelper2 = new LineHelper({})),
+      (this.children.LineHelper3 = new LineHelper({})),
+      (this.children.LineHelper4 = new LineHelper({})),
+      (this.children.LineHelper5 = new LineHelper({}));
   }
 
   render() {

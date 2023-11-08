@@ -24,7 +24,8 @@ export class PasswordData extends Block {
         inputPlaceholder: '•••••••••••',
         input_name: 'repeatPassword',
       })),
-      (this.children.LineHelper = new LineHelper({}));
+      (this.children.LineHelper = new LineHelper({})),
+      (this.children.LineHelper1 = new LineHelper({}));
   }
 
   render() {

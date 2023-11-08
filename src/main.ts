@@ -3,7 +3,7 @@ import Block from './modules/utils/Block';
 import { loginContext, signinContext, chatsContext } from './pages';
 
 import { Profile } from './pages/Profile';
-// import { ProfileChangeData } from './pages/Profile/ChangeData';
+import { ChangeData } from './pages/Profile/ChangeData';
 import { ChangePassword } from './pages/Profile/ChangePassword';
 import { LoginPage } from './pages/Login';
 import { SigninPage } from './pages/Signin';
@@ -55,6 +55,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       break;
     case `${origin}${Routes.ChangePassword}`:
       render(new ChangePassword({}));
+      break;
+    case `${origin}${Routes.ChangeData}`:
+      render(new ChangeData({}));
       break;
   }
 });

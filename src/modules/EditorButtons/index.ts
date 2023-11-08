@@ -22,7 +22,8 @@ export class EditorButtons extends Block {
         exitMode: true,
         to: '/login',
       })),
-      (this.children.LineHelper = new LineHelper({}));
+      (this.children.LineHelper = new LineHelper({})),
+      (this.children.LineHelper1 = new LineHelper({}));
   }
 
   render() {
