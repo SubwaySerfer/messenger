@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       render(new SigninPage(signinContext));
       break;
     case `${origin}${Routes.ChatsPage}`:
-      render(new ChatsPage(chatsContext));
+      render(new ChatsPage(chatsContext.dataChank));
       break;
     case `${origin}${Routes.Profile}`:
       render(new Profile({}));

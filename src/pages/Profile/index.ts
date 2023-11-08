@@ -5,8 +5,6 @@ import { AvatarBlock, EditorButtons } from '../../modules';
 
 import { SmallSidebar } from '../../layout/SmallSidebar';
 import { StaticData } from '../../modules/EditorData/StaticData';
-// import { EditorButtons } from '../../modules/EditorButtons';
-// import { AvatarBlock } from '../../modules/AvatarBlock';
 
 export class Profile extends Block {
   constructor(props: unknown) {

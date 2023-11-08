@@ -1,21 +1,22 @@
 import template from './index.hbs';
 import { ChatSidebar } from '../../modules';
+
 import { ChatField } from '../../components';
 import Block from '../../modules/utils/Block';
-// import { ChatProfiles } from '../../components';
+import { ChatProfiles } from '../../components';
 
-// interface ChatsPageProps {
-//   chatsData: ChatProfiles;
-// }
+interface ChatsPageProps {
+  data: ChatProfiles;
+}
 
-export class ChatsPage extends Block {
-  constructor(props: unknown) {
+export class ChatsPage extends Block<ChatsPageProps> {
+  constructor(props: ChatsPageProps) {
     super(props);
   }
 
   init() {
     (this.children.ChatSidebar = new ChatSidebar({
-      chatsData: this.props.chatsData,
+      data: this.props.data,
     })),
       (this.children.ChatField = new ChatField({}));
   }

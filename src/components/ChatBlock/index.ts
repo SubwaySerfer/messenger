@@ -2,12 +2,6 @@ import Block from '../../modules/utils/Block';
 import template from './index.hbs';
 import { ChatProfiles } from '..';
 
-// import { chatsData } from '../../modules/ChatSidebar/chatsData';
-
-// export const ChatBlock = ({ props }) => {
-//   return Handlebars.compile(tmpl)({ chatsData, props });
-// };
-
 interface ChatBlockProps {
   chatsData: ChatProfiles;
 }
