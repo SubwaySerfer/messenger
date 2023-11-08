@@ -1,10 +1,6 @@
 import template from './index.hbs';
 import Block from '../../modules/utils/Block';
 
-// export const ProfileInput = (props) => {
-//   return Handlebars.compile(tmpl)(props);
-// };
-
 interface ProfileInputProps {
   inputName: string;
   inputPlaceholder: string;

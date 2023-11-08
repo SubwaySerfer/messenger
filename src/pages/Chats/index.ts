@@ -2,14 +2,14 @@ import template from './index.hbs';
 import { ChatSidebar } from '../../modules';
 import { ChatField } from '../../components';
 import Block from '../../modules/utils/Block';
-import { ChatProfiles } from '../../components';
+// import { ChatProfiles } from '../../components';
 
-interface ChatsPageProps {
-  chatsData: ChatProfiles;
-}
+// interface ChatsPageProps {
+//   chatsData: ChatProfiles;
+// }
 
-export class ChatsPage extends Block<ChatsPageProps> {
-  constructor(props: ChatsPageProps) {
+export class ChatsPage extends Block {
+  constructor(props: unknown) {
     super(props);
   }
 

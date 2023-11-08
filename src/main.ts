@@ -4,11 +4,12 @@ import { loginContext, signinContext, chatsContext } from './pages';
 
 import { Profile } from './pages/Profile';
 // import { ProfileChangeData } from './pages/Profile/ChangeData';
-// import { ProfileChangePassword } from './pages/Profile/ChangePassword';
+import { ChangePassword } from './pages/Profile/ChangePassword';
 import { LoginPage } from './pages/Login';
 import { SigninPage } from './pages/Signin';
 import { Routes } from './router/constants';
 import { ChatsPage } from './pages/Chats';
+// import {}
 // import { Chats } from './pages/Chats';
 
 // import { Page404 } from './pages/Error/Page404';
@@ -51,6 +52,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       break;
     case `${origin}${Routes.Profile}`:
       render(new Profile({}));
+      break;
+    case `${origin}${Routes.ChangePassword}`:
+      render(new ChangePassword({}));
       break;
   }
 });
