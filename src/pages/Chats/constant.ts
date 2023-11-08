@@ -96,5 +96,6 @@ const dataChank = {
 };
 
 export const chatsContext = {
-  dataChank,
+  messageField: true,
+  ...dataChank,
 };

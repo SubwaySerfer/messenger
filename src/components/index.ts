@@ -8,3 +8,4 @@ export * from './ChatBlock';
 export * from './ProfileString';
 export * from './ProfileInput';
 export * from './LineHelper';
+export * from './MessageInput'

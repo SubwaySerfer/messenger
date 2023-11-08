@@ -7,6 +7,7 @@ import { ChatProfiles } from '../../components';
 
 interface ChatsPageProps {
   data: ChatProfiles;
+  messageField: boolean;
 }
 
 export class ChatsPage extends Block<ChatsPageProps> {
@@ -15,10 +16,12 @@ export class ChatsPage extends Block<ChatsPageProps> {
   }
 
   init() {
-    (this.children.ChatSidebar = new ChatSidebar({
+    this.children.ChatSidebar = new ChatSidebar({
       data: this.props.data,
-    })),
-      (this.children.ChatField = new ChatField({}));
+    });
+    this.children.ChatField = new ChatField({
+      messageField: this.props.messageField,
+    });
   }
 
   render() {
