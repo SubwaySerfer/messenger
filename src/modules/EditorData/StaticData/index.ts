@@ -1,0 +1,42 @@
+import Block from '../../utils/Block';
+import template from './index.hbs';
+
+import { ProfileString, LineHelper } from '../../../components';
+
+export class StaticData extends Block {
+  constructor(props: unknown) {
+    super(props);
+  }
+
+  init() {
+    (this.children.EmailString = new ProfileString({
+      stringName: 'Почта',
+      stringValue: 'pochta@yandex.ru',
+    })),
+      (this.children.LoginString = new ProfileString({
+        stringName: 'Логин',
+        stringValue: 'ivanivanov',
+      })),
+      (this.children.FirstNameString = new ProfileString({
+        stringName: 'Имя',
+        stringValue: 'Иван',
+      })),
+      (this.children.LastNameString = new ProfileString({
+        stringName: 'Фамилия',
+        stringValue: 'Иванов',
+      })),
+      (this.children.NicknameString = new ProfileString({
+        stringName: 'Имя в чате',
+        stringValue: 'Иван',
+      })),
+      (this.children.PhoneString = new ProfileString({
+        stringName: 'Телефон',
+        stringValue: '+7 (909) 967 30 30',
+      })),
+      (this.children.LineHelper = new LineHelper({}));
+  }
+
+  render() {
+    return this.compile(template, this.props);
+  }
+}

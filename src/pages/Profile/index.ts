@@ -1,20 +1,30 @@
 import Block from '../../modules/utils/Block';
 import template from './index.hbs';
 
-import { SmallSidebar } from '../../layout/SmallSidebar';
-import { EditorData } from '../../modules/EditorData/StaticData';
-import { EditorButtons } from '../../modules/EditorButtons';
-import { AvatarBlock } from '../../modules/AvatarBlock';
+import { AvatarBlock, EditorButtons } from '../../modules';
 
-export const Profile = () => {
-  return Handlebars.compile(tmpl)({
-    SmallSidebar: SmallSidebar({ arrowLink: '/chats' }),
-    AvatarBlock: AvatarBlock({
-      nameProfile: 'Иван',
-      avatar: 'assets/images/main-avatar.jpg',
-      imageAlt: 'motorcycle helmet on the car roof.',
-    }),
-    EditorData: EditorData({}),
-    EditorButtons: EditorButtons({}),
-  });
-};
+import { SmallSidebar } from '../../layout/SmallSidebar';
+import { StaticData } from '../../modules/EditorData/StaticData';
+// import { EditorButtons } from '../../modules/EditorButtons';
+// import { AvatarBlock } from '../../modules/AvatarBlock';
+
+export class Profile extends Block {
+  constructor(props: unknown) {
+    super(props);
+  }
+
+  init() {
+    (this.children.SmallSidebar = new SmallSidebar({ arrowLink: '/chats' })),
+      (this.children.AvatarBlock = new AvatarBlock({
+        nameProfile: 'Иван',
+        avatar: 'assets/images/main-avatar.jpg',
+        imageAlt: 'motorcycle helmet on the car roof.',
+      })),
+      (this.children.EditorData = new StaticData({})),
+      (this.children.EditorButtons = new EditorButtons({}));
+  }
+
+  render() {
+    return this.compile(template, this.props);
+  }
+}

@@ -2,7 +2,7 @@ import '../src/sass/style.sass';
 import Block from './modules/utils/Block';
 import { loginContext, signinContext, chatsContext } from './pages';
 
-// import { Profile } from './pages/Profile';
+import { Profile } from './pages/Profile';
 // import { ProfileChangeData } from './pages/Profile/ChangeData';
 // import { ProfileChangePassword } from './pages/Profile/ChangePassword';
 import { LoginPage } from './pages/Login';
@@ -48,6 +48,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       break;
     case `${origin}${Routes.ChatsPage}`:
       render(new ChatsPage(chatsContext));
+      break;
+    case `${origin}${Routes.Profile}`:
+      render(new Profile({}));
       break;
   }
 });
