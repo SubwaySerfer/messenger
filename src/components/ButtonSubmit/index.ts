@@ -5,6 +5,11 @@ interface ButtonSubmitProps {
   buttonTitle?: string;
   linkPath?: string;
   type?: string;
+  imageBtn?: string;
+  class?: string;
+  events?: {
+    click: () => void;
+  };
 }
 export class ButtonSubmit extends Block {
   constructor(props: ButtonSubmitProps) {

@@ -4,7 +4,6 @@ import template from './index.hbs';
 import FormValidator from '../../../../modules/utils/Validator';
 
 interface LoginFormProps {
-  // class?: string;
   action?: string;
   method?: string;
   events?: {

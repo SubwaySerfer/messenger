@@ -1,5 +1,8 @@
-<button class="button-submit">
-  <a class="button-submit__link" 
+<button class="{{class}}" type="{{type}}">
+  {{!-- <a class="button-submit__link" 
   href="{{ linkPath }}" type="{{type}}">{{ buttonTitle }}
-  </a>
+  </a> --}}
+  {{#if imageBtn}}
+  <img src="assets/icons/arrow.svg" alt="send message." class="message__arrow">
+  {{/if}}
 </button>

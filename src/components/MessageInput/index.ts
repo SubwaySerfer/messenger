@@ -5,7 +5,8 @@ interface MessageInputProps {
   input_type?: string;
   input_id?: string;
   input_placeholder?: string;
-  input_name?: string;
+  input_name: string;
+  required?: string;
 }
 
 export class MessageInput extends Block<MessageInputProps> {

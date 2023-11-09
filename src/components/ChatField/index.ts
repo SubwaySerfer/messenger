@@ -1,23 +1,26 @@
 import template from './index.hbs';
 import Block from '../../modules/utils/Block';
-
-import { MessageInput } from '..';
+import FormValidator from '../../modules/utils/Validator';
+import { MessageForm } from '../../pages/Chats/MessageForm';
 
 interface ChatFieldProps {
   messageField: boolean;
+  events?: { submit: (event: HTMLFormElement) => void };
 }
 export class ChatField extends Block<ChatFieldProps> {
-  //TODO: del any
   constructor(props: ChatFieldProps) {
     super(props);
   }
 
   init() {
-    this.children.MessageInput = new MessageInput({
-      input_type: 'text',
-      input_id: 'message',
-      input_name: 'message',
-      input_placeholder: 'Сообщение',
+    this.children.MessageForm = new MessageForm({
+      events: {
+        submit: (e) => {
+          e.preventDefault();
+
+          new FormValidator(this.element as HTMLElement).init();
+        },
+      },
     });
   }
 
