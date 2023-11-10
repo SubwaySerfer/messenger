@@ -5,6 +5,8 @@ enum ValidatorEnum {
   Email = 'email',
   Password = 'password',
   Phone = 'phone',
+  NewPassword = 'new_password',
+  RepeatPassword = 'repeat_password',
 }
 
 class FormValidator {
@@ -56,10 +58,14 @@ class FormValidator {
         isValidInput = this._validateEmail(input);
         break;
       case ValidatorEnum.Password:
+      case ValidatorEnum.NewPassword:
         isValidInput = this._validatePassword(input);
         break;
       case ValidatorEnum.Phone:
         isValidInput = this._validatePhone(input);
+        break;
+      case ValidatorEnum.RepeatPassword:
+        isValidInput = this._validateRepPassword(input);
         break;
       default:
         isValidInput = true;
@@ -131,7 +137,6 @@ class FormValidator {
 
       return false;
     }
-
     return true;
   }
 
@@ -173,6 +178,19 @@ class FormValidator {
       return false;
     } else if (!regExp.test(input.value)) {
       errorEl.textContent = 'Используйте символы только латиницы и кириллицы';
+      return false;
+    }
+
+    return true;
+  }
+
+  private _validateRepPassword(input: HTMLInputElement): boolean {
+    const errorEl = (input.parentNode as HTMLElement).querySelector(
+      '.error__text'
+    ) as HTMLElement;
+    errorEl.textContent = '';
+    if (input.value === '') {
+      errorEl.textContent = 'Заполните поле';
       return false;
     }
 

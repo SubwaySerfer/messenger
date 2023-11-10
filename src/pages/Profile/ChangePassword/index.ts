@@ -24,6 +24,7 @@ export class ChangePassword extends Block {
         linkPath: '/profile',
         id: 'passwordForm',
         class: 'button-submit',
+        type: 'submit',
       }));
     this.children.PasswordData = new PasswordData({
       formId: 'passwordForm',

@@ -18,7 +18,7 @@ export class DinamicData extends Block<DinamicDataProps> {
       inputLabel: 'Почта',
       inputPlaceholder: 'pochta@yandex.ru',
       input_name: 'email',
-      input_id: 'email',
+      id: 'email',
       events: {
         focusout: (event) => {
           const input = event.target as unknown as HTMLInputElement;
@@ -30,7 +30,7 @@ export class DinamicData extends Block<DinamicDataProps> {
         inputLabel: 'Логин',
         inputPlaceholder: 'ivanivanov',
         input_name: 'login',
-        input_id: 'login',
+        id: 'login',
         events: {
           focusout: (event) => {
             const input = event.target as unknown as HTMLInputElement;
@@ -42,7 +42,7 @@ export class DinamicData extends Block<DinamicDataProps> {
         inputLabel: 'Имя',
         inputPlaceholder: 'Иван',
         input_name: 'first_name',
-        input_id: 'firstName',
+        id: 'firstName',
         events: {
           focusout: (event) => {
             const input = event.target as unknown as HTMLInputElement;
@@ -54,7 +54,7 @@ export class DinamicData extends Block<DinamicDataProps> {
         inputLabel: 'Фамилия',
         inputPlaceholder: 'Иванов',
         input_name: 'second_name',
-        input_id: 'secondName',
+        id: 'secondName',
         events: {
           focusout: (event) => {
             const input = event.target as unknown as HTMLInputElement;
@@ -66,7 +66,7 @@ export class DinamicData extends Block<DinamicDataProps> {
         inputLabel: 'Имя в чате',
         inputPlaceholder: 'Иван',
         input_name: 'display_name',
-        input_id: 'displayName',
+        id: 'displayName',
         events: {
           focusout: (event) => {
             const input = event.target as unknown as HTMLInputElement;
@@ -78,7 +78,7 @@ export class DinamicData extends Block<DinamicDataProps> {
         inputLabel: 'Телефон',
         inputPlaceholder: '+7 (909) 967 30 30',
         input_name: 'phone',
-        input_id: 'phone',
+        id: 'phone',
         events: {
           focusout: (event) => {
             const input = event.target as unknown as HTMLInputElement;

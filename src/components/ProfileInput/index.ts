@@ -5,7 +5,7 @@ interface ProfileInputProps {
   inputPlaceholder: string;
   input_name: string;
   inputLabel: string;
-  input_id?: string;
+  id?: string;
   events?: {
     change?: () => void;
     focusout?: (event: HTMLFormElement) => void;

@@ -4,8 +4,12 @@ import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
 import FormValidator from '../../utils/Validator';
 
-export class PasswordData extends Block {
-  constructor(props: unknown) {
+interface PasswordDataProps {
+  formId: string;
+}
+
+export class PasswordData extends Block<PasswordDataProps> {
+  constructor(props: PasswordDataProps) {
     super(props);
   }
 
@@ -14,11 +18,18 @@ export class PasswordData extends Block {
       inputLabel: 'Старый пароль',
       inputPlaceholder: '•••••••••',
       input_name: 'oldPassword',
+      events: {
+        focusout: (event) => {
+          const input = event.target as unknown as HTMLInputElement;
+          new FormValidator(this.element as HTMLElement).checkValidity(input);
+        },
+      },
     })),
       (this.children.NewPasInput = new ProfileInput({
         inputLabel: 'Новый пароль',
         inputPlaceholder: '•••••••••••',
-        input_name: 'newPassword',
+        input_name: 'new_password',
+        id: 'new_password',
         events: {
           focusout: (event) => {
             const input = event.target as unknown as HTMLInputElement;
@@ -29,7 +40,8 @@ export class PasswordData extends Block {
       (this.children.RepeatNewPasInput = new ProfileInput({
         inputLabel: 'Повторите новый пароль',
         inputPlaceholder: '•••••••••••',
-        input_name: 'repeatPassword',
+        input_name: 'repeat_password',
+        id: 'repeat_password',
         events: {
           focusout: (event) => {
             const input = event.target as unknown as HTMLInputElement;
