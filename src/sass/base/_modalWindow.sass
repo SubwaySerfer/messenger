@@ -48,7 +48,14 @@
     color: $color-black
     font-size: 1.3rem
     line-height: 1.3rem
+    outline: none
     &_label
       color: $color-gray-light
       font-size: 0.9rem
       line-height: 0.9rem
+      @extend %flex-col
+      gap: .8rem
+.error__text
+  color: $color-red
+  font-size: .9rem
+  transform: translateY(-10px)
