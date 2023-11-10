@@ -2,6 +2,7 @@ import Block from '../../utils/Block';
 import template from './index.hbs';
 import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
+import FormValidator from '../../utils/Validator';
 
 export class PasswordData extends Block {
   constructor(props: unknown) {
@@ -10,19 +11,31 @@ export class PasswordData extends Block {
 
   init() {
     (this.children.OldPasInput = new ProfileInput({
-      inputName: 'Старый пароль',
+      inputLabel: 'Старый пароль',
       inputPlaceholder: '•••••••••',
       input_name: 'oldPassword',
     })),
       (this.children.NewPasInput = new ProfileInput({
-        inputName: 'Новый пароль',
+        inputLabel: 'Новый пароль',
         inputPlaceholder: '•••••••••••',
         input_name: 'newPassword',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.RepeatNewPasInput = new ProfileInput({
-        inputName: 'Повторите новый пароль',
+        inputLabel: 'Повторите новый пароль',
         inputPlaceholder: '•••••••••••',
         input_name: 'repeatPassword',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.LineHelper = new LineHelper({})),
       (this.children.LineHelper1 = new LineHelper({}));

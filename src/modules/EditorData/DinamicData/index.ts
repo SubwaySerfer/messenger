@@ -3,6 +3,7 @@ import Block from '../../utils/Block';
 
 import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
+import FormValidator from '../../utils/Validator';
 
 interface DinamicDataProps {
   formId: string;
@@ -14,34 +15,76 @@ export class DinamicData extends Block<DinamicDataProps> {
 
   init() {
     (this.children.EmailInput = new ProfileInput({
-      inputName: 'Почта',
+      inputLabel: 'Почта',
       inputPlaceholder: 'pochta@yandex.ru',
       input_name: 'email',
+      input_id: 'email',
+      events: {
+        focusout: (event) => {
+          const input = event.target as unknown as HTMLInputElement;
+          new FormValidator(this.element as HTMLElement).checkValidity(input);
+        },
+      },
     })),
       (this.children.LoginInput = new ProfileInput({
-        inputName: 'Логин',
+        inputLabel: 'Логин',
         inputPlaceholder: 'ivanivanov',
         input_name: 'login',
+        input_id: 'login',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.FirstNameInput = new ProfileInput({
-        inputName: 'Имя',
+        inputLabel: 'Имя',
         inputPlaceholder: 'Иван',
         input_name: 'first_name',
+        input_id: 'firstName',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.LastNameInput = new ProfileInput({
-        inputName: 'Фамилия',
+        inputLabel: 'Фамилия',
         inputPlaceholder: 'Иванов',
         input_name: 'second_name',
+        input_id: 'secondName',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.NicknameInput = new ProfileInput({
-        inputName: 'Имя в чате',
+        inputLabel: 'Имя в чате',
         inputPlaceholder: 'Иван',
         input_name: 'display_name',
+        input_id: 'displayName',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.PhoneInput = new ProfileInput({
-        inputName: 'Телефон',
+        inputLabel: 'Телефон',
         inputPlaceholder: '+7 (909) 967 30 30',
         input_name: 'phone',
+        input_id: 'phone',
+        events: {
+          focusout: (event) => {
+            const input = event.target as unknown as HTMLInputElement;
+            new FormValidator(this.element as HTMLElement).checkValidity(input);
+          },
+        },
       })),
       (this.children.LineHelper = new LineHelper({})),
       (this.children.LineHelper2 = new LineHelper({})),
