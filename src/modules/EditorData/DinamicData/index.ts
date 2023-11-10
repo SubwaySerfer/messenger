@@ -4,8 +4,11 @@ import Block from '../../utils/Block';
 import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
 
-export class DinamicData extends Block {
-  constructor(props: unknown) {
+interface DinamicDataProps {
+  formId: string;
+}
+export class DinamicData extends Block<DinamicDataProps> {
+  constructor(props: DinamicDataProps) {
     super(props);
   }
 

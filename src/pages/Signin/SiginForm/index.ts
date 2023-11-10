@@ -110,6 +110,9 @@ export class SigninForm extends Block<SigninFormProps> {
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Зарегистрироваться',
         type: 'submit',
+        linkPath: '/login',
+        id: 'signinForm',
+        class: 'button-submit',
       }));
     this.children.ButtonLink = new ButtonLink({
       textLink: 'Войти',

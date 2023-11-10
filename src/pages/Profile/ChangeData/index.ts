@@ -19,10 +19,14 @@ export class ChangeData extends Block {
         imageAlt: 'motorcycle helmet on the car roof.',
         showName: 'false',
       })),
-      (this.children.DinamicData = new DinamicData({})),
+      (this.children.DinamicData = new DinamicData({
+        formId: 'dataForm',
+      })),
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
         linkPath: '/profile',
+        id: 'dataForm',
+        class: 'button-submit',
       }));
   }
 

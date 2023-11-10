@@ -22,8 +22,12 @@ export class ChangePassword extends Block {
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
         linkPath: '/profile',
-      })),
-      (this.children.PasswordData = new PasswordData({}));
+        id: 'passwordForm',
+        class: 'button-submit',
+      }));
+    this.children.PasswordData = new PasswordData({
+      formId: 'passwordForm',
+    });
   }
 
   render() {

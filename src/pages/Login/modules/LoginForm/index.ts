@@ -48,6 +48,9 @@ export class LoginForm extends Block<LoginFormProps> {
 
     this.children.ButtonSubmit = new ButtonSubmit({
       buttonTitle: 'Войти',
+      linkPath: '/chats',
+      id: 'loginForm',
+      class: 'button-submit',
     });
     this.children.ButtonLink = new ButtonLink({
       textLink: 'Нет аккаунта?',
