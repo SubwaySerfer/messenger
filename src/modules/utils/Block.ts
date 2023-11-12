@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import EventBus from './EventBus';
 import { nanoid } from 'nanoid';
 
@@ -118,7 +119,7 @@ export default class Block<P extends Record<string, any> = any> {
     this.eventBus().emit(Block.EVENTS.FLOW_CDU);
   }
 
-  // Может переопределять пользователь, необязательно трогать
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected componentDidUpdate(_oldProps: P, _newProps: P) {
     return true;
   }
