@@ -1,0 +1,13 @@
+.button-link {
+  color: $color-blue;
+  font-family: $main-font;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+  &[exit="true"] {
+    color: red;
+  }
+}

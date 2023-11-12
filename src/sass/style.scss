@@ -1,0 +1,48 @@
+@import './abstract/constants.scss';
+@import './abstract/placeholders.scss';
+
+@import '../pages/Chats/chatsPage.scss';
+@import '../pages/Profile/profilePage.scss';
+
+@import './base/modalWindow.scss';
+
+@import '../layout/SmallSidebar/smallSidebar.scss';
+
+@import '../components/ButtonSubmit/button-submit.scss';
+@import '../components/ButtonLink/button-link.scss';
+@import '../components/SearchInput/searchInput.scss';
+@import '../components/ChatBlock/chatBlock.scss';
+@import '../components/ChatField/chatField.scss';
+@import '../components/LineHelper/lineHelper.scss';
+@import '../components/ProfileString/profileString.scss';
+@import '../components/MessageInput/_message-input.scss';
+
+@import '../modules/EditorData/editorData.scss';
+@import '../modules/ChatSidebar/chatSidebar.scss';
+@import '../modules/EditorButtons/editorButtons.scss';
+@import '../modules/AvatarBlock/avatarBlock.scss';
+@import '../modules/ErrorBlock/errorBlock.scss';
+
+*{
+  box-sizing: border-box;
+}
+html{
+  font-size: 10px;
+}
+.test{
+  color: green;
+}
+#app{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+body, h1, ul, h5, h2, h3, h4, h6, p{
+  margin: 0;
+}
+ul{
+  padding: 0;
+}

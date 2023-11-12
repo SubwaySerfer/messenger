@@ -1,4 +1,4 @@
-import '../src/sass/style.sass';
+import '../src/sass/style.scss';
 import Block from './modules/utils/Block';
 import { loginContext, signinContext, chatsContext } from './pages';
 
