@@ -1,38 +1,36 @@
-@import './abstract/constants.scss';
-@import './abstract/placeholders.scss';
+@import "./abstract/constants";
+@import "./abstract/placeholders";
+@import "../pages/Chats/chatsPage";
+@import "../pages/Profile/profilePage";
+@import "./base/modalWindow";
+@import "../layout/SmallSidebar/smallSidebar";
+@import "../components/ButtonSubmit/button-submit";
+@import "../components/ButtonLink/button-link";
+@import "../components/SearchInput/searchInput";
+@import "../components/ChatBlock/chatBlock";
+@import "../components/ChatField/chatField";
+@import "../components/LineHelper/lineHelper";
+@import "../components/ProfileString/profileString";
+@import "../components/MessageInput/message-input";
+@import "../modules/EditorData/editorData";
+@import "../modules/ChatSidebar/chatSidebar";
+@import "../modules/EditorButtons/editorButtons";
+@import "../modules/AvatarBlock/avatarBlock";
+@import "../modules/ErrorBlock/errorBlock";
 
-@import '../pages/Chats/chatsPage.scss';
-@import '../pages/Profile/profilePage.scss';
-
-@import './base/modalWindow.scss';
-
-@import '../layout/SmallSidebar/smallSidebar.scss';
-
-@import '../components/ButtonSubmit/button-submit.scss';
-@import '../components/ButtonLink/button-link.scss';
-@import '../components/SearchInput/searchInput.scss';
-@import '../components/ChatBlock/chatBlock.scss';
-@import '../components/ChatField/chatField.scss';
-@import '../components/LineHelper/lineHelper.scss';
-@import '../components/ProfileString/profileString.scss';
-@import '../components/MessageInput/_message-input.scss';
-
-@import '../modules/EditorData/editorData.scss';
-@import '../modules/ChatSidebar/chatSidebar.scss';
-@import '../modules/EditorButtons/editorButtons.scss';
-@import '../modules/AvatarBlock/avatarBlock.scss';
-@import '../modules/ErrorBlock/errorBlock.scss';
-
-*{
+* {
   box-sizing: border-box;
 }
-html{
+
+html {
   font-size: 10px;
 }
-.test{
+
+.test {
   color: green;
 }
-#app{
+
+#app {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -40,9 +38,19 @@ html{
   height: 100vh;
   justify-content: center;
 }
-body, h1, ul, h5, h2, h3, h4, h6, p{
+
+body,
+h1,
+ul,
+h5,
+h2,
+h3,
+h4,
+h6,
+p {
   margin: 0;
 }
-ul{
+
+ul {
   padding: 0;
 }

@@ -1,5 +1,6 @@
 .profile-string {
   @extend %flex-row;
+
   font-family: $main-font;
   font-style: normal;
   font-weight: 500;
@@ -19,9 +20,11 @@
 
   &__label {
     @extend %flex-col;
+
     justify-content: center;
     align-items: center;
   }
+
   &__input {
     border: none;
     text-align: right;

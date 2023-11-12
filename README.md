@@ -12,7 +12,7 @@
 
 #### Стэк технологий:
 
-TS, JS, SASS, Handlebars, Express, esLint, Stylelint
+TS, JS, SCSS, Handlebars, Express, esLint, Stylelint, Prettier
 
 ---
 

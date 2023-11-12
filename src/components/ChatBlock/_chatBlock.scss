@@ -1,5 +1,6 @@
 .chat-block {
   @extend %flex-row;
+
   height: 7.2rem;
   border-top: 1px solid $color-white-dark;
   border-bottom: 1px solid $color-white-dark;
@@ -9,15 +10,18 @@
   padding: 1.2rem 0;
   gap: 1rem;
   justify-content: flex-start;
+
   &__img {
     width: 4.7rem;
     height: 4.7rem;
     border-radius: 30px;
     object-fit: cover;
   }
+
   &__content {
     flex: 1;
   }
+
   &-name {
     color: $color-black;
     font-size: 1.3rem;
@@ -25,6 +29,7 @@
     font-weight: 600;
     line-height: 1.3rem;
   }
+
   &-text {
     color: $color-gray-light;
     font-size: 1.2rem;

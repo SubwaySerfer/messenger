@@ -1,5 +1,6 @@
 .error-block {
   @extend %flex-col;
+
   justify-content: center;
   align-items: center;
   color: $color-black;
@@ -13,6 +14,7 @@
     line-height: 4rem;
     margin-bottom: 2rem;
   }
+
   &__description {
     font-size: 2rem;
     line-height: 2rem;

@@ -13,11 +13,13 @@
   font-weight: 500;
   line-height: 1.3rem;
   cursor: pointer;
+
   &__link {
     text-decoration: none;
     color: $color-white;
   }
 }
+
 .message-btn {
   width: 2.8rem;
   height: 2.8rem;

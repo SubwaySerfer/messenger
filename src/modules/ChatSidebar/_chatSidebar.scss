@@ -1,16 +1,20 @@
 .chat-sidebar {
   @extend %flex-col;
+
   width: 31rem;
   height: 100%;
   border-right: 1px solid $color-white-dark;
+
   &__header {
     @extend %flex-col;
+
     padding: 2.1rem 1rem 1.4rem;
     height: 10.2rem;
     justify-content: space-between;
     align-items: center;
     gap: 2.3rem;
   }
+
   &__profile {
     color: $color-gray-light;
     text-align: right;
@@ -24,6 +28,7 @@
     position: relative;
     padding-right: 1.24rem;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -35,6 +40,7 @@
     border-color: #888;
     padding: 2.5px;
   }
+
   &__dialogs {
     overflow-y: auto;
   }
