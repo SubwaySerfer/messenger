@@ -1,0 +1,23 @@
+.error-block {
+  @extend %flex-col;
+
+  justify-content: center;
+  align-items: center;
+  color: $color-black;
+  text-align: center;
+  font-family: $main-font;
+  font-style: normal;
+  font-weight: 500;
+
+  &__title {
+    font-size: 4rem;
+    line-height: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  &__description {
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-bottom: 6.9rem;
+  }
+}

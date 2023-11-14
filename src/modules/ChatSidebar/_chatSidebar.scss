@@ -1,0 +1,47 @@
+.chat-sidebar {
+  @extend %flex-col;
+
+  width: 31rem;
+  height: 100%;
+  border-right: 1px solid $color-white-dark;
+
+  &__header {
+    @extend %flex-col;
+
+    padding: 2.1rem 1rem 1.4rem;
+    height: 10.2rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.3rem;
+  }
+
+  &__profile {
+    color: $color-gray-light;
+    text-align: right;
+    font-family: $main-font;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.2rem;
+    align-self: flex-end;
+    text-decoration: none;
+    position: relative;
+    padding-right: 1.24rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 58%;
+    transform: translateY(-58%) rotate(-45deg);
+    right: 1px;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #888;
+    padding: 2.5px;
+  }
+
+  &__dialogs {
+    overflow-y: auto;
+  }
+}

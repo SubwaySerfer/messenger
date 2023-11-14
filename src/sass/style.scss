@@ -1,0 +1,56 @@
+@import "./abstract/constants";
+@import "./abstract/placeholders";
+@import "../pages/Chats/chatsPage";
+@import "../pages/Profile/profilePage";
+@import "./base/modalWindow";
+@import "../layout/SmallSidebar/smallSidebar";
+@import "../components/ButtonSubmit/button-submit";
+@import "../components/ButtonLink/button-link";
+@import "../components/SearchInput/searchInput";
+@import "../components/ChatBlock/chatBlock";
+@import "../components/ChatField/chatField";
+@import "../components/LineHelper/lineHelper";
+@import "../components/ProfileString/profileString";
+@import "../components/MessageInput/message-input";
+@import "../modules/EditorData/editorData";
+@import "../modules/ChatSidebar/chatSidebar";
+@import "../modules/EditorButtons/editorButtons";
+@import "../modules/AvatarBlock/avatarBlock";
+@import "../modules/ErrorBlock/errorBlock";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+.test {
+  color: green;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+body,
+h1,
+ul,
+h5,
+h2,
+h3,
+h4,
+h6,
+p {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}

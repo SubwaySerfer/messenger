@@ -1,0 +1,17 @@
+{"extends":  ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+"env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+},
+"plugins": ["@typescript-eslint"],
+"parser": "@typescript-eslint/parser",
+"parserOptions": {
+    "sourceType": "module"
+},
+"root": true,
+"rules": {
+    "@typescript-eslint/no-this-alias": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-empty-interface": "off"}
+}

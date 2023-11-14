@@ -12,13 +12,13 @@
 
 #### Стэк технологий:
 
-JS, SASS, Handlebars, Express
+TS, JS, SCSS, Handlebars, Express, esLint, Stylelint, Prettier
 
 ---
 
 ## Ссылки:
 
-- [Авторизация](https://deploy--astounding-frangollo-d58fdf.netlify.app/)
+- [Авторизация](https://deploy--astounding-frangollo-d58fdf.netlify.app/login)
 - [Регистрация](https://deploy--astounding-frangollo-d58fdf.netlify.app/signin)
 - [Чаты](https://deploy--astounding-frangollo-d58fdf.netlify.app/chats)
 - [Профиль](https://deploy--astounding-frangollo-d58fdf.netlify.app/profile)
