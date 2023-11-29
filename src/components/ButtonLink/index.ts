@@ -1,10 +1,13 @@
 import template from './index.hbs';
-import Block from '../../modules/utils/Block';
+import Block from '../../core/Block';
 
 interface ButtonLinkProps {
   to?: string;
   textLink?: string;
   exitMode?: boolean;
+  events?: {
+    click: (e: Event) => void;
+  };
 }
 
 export class ButtonLink extends Block {

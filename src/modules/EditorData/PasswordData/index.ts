@@ -1,8 +1,8 @@
-import Block from '../../utils/Block';
+import Block from '../../../core/Block';
 import template from './index.hbs';
 import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
-import FormValidator from '../../utils/Validator';
+import FormValidator from '../../../utils/Validator';
 
 interface PasswordDataProps {
   formId: string;

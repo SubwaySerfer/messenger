@@ -2,7 +2,7 @@ import template from './index.hbs';
 import { ChatSidebar } from '../../modules';
 
 import { ChatField } from '../../components';
-import Block from '../../modules/utils/Block';
+import Block from '../../core/Block';
 import { ChatProfiles } from '../../components';
 
 interface ChatsPageProps {

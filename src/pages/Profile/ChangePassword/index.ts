@@ -1,6 +1,6 @@
-import Block from '../../../modules/utils/Block';
+import Block from '../../../core/Block';
 import template from './index.hbs';
-
+import Router, {Routes} from '../../../core/Router';
 import { SmallSidebar } from '../../../layout/SmallSidebar';
 import { AvatarBlock } from '../../../modules/AvatarBlock';
 import { ButtonSubmit } from '../../../components/ButtonSubmit';
@@ -21,7 +21,12 @@ export class ChangePassword extends Block {
       })),
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
-        linkPath: '/settings',
+        events: {
+          click: () => {
+            Router.go(Routes.Profile);
+          },
+        },
+        // linkPath: '/settings',
         id: 'passwordForm',
         class: 'button-submit',
         type: 'submit',

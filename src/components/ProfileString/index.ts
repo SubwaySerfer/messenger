@@ -1,6 +1,5 @@
-import Block from '../../modules/utils/Block';
+import Block from '../../core/Block';
 import template from './index.hbs';
-
 
 interface ProfileStringProps {
   stringName: string;

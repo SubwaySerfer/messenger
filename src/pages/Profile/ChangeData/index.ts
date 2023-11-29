@@ -1,6 +1,6 @@
 import template from './index.hbs';
-import Block from '../../../modules/utils/Block';
-
+import Block from '../../../core/Block';
+import Router, { Routes } from '../../../core/Router';
 import { SmallSidebar } from '../../../layout/SmallSidebar';
 import { DinamicData } from '../../../modules/EditorData/DinamicData';
 import { AvatarBlock } from '../../../modules/AvatarBlock';
@@ -24,7 +24,12 @@ export class ChangeData extends Block {
       })),
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
-        linkPath: '/settings',
+        events: {
+          click: () => {
+            Router.go(Routes.Profile);
+          },
+        },
+        // linkPath: '/settings',
         id: 'dataForm',
         class: 'button-submit',
       }));

@@ -1,9 +1,9 @@
 import template from './index.hbs';
-import Block from '../../utils/Block';
+import Block from '../../../core/Block';
 
 import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
-import FormValidator from '../../utils/Validator';
+import FormValidator from '../../../utils/Validator';
 
 interface DinamicDataProps {
   formId: string;

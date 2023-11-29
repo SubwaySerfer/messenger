@@ -1,5 +1,5 @@
 import template from './index.hbs';
-import Block from '../utils/Block';
+import Block from '../../core/Block';
 
 import { ChatBlock, ChatProfiles, SearchInput } from '../../components';
 interface ChatSidebarProps {

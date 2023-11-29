@@ -1,11 +1,14 @@
 import template from './index.hbs';
-import Block from '../utils/Block';
+import Block from '../../core/Block';
 
 import { ButtonLink } from '../../components/ButtonLink';
 
 interface ErrorBlockProps {
   errorTitle?: string;
   errorDescription?: string;
+  events?: {
+    click: (e: Event) => void;
+  };
 }
 
 export class ErrorBlock extends Block<ErrorBlockProps> {
@@ -16,7 +19,6 @@ export class ErrorBlock extends Block<ErrorBlockProps> {
   init() {
     this.children.ButtonLink = new ButtonLink({
       textLink: 'Назад к чатам',
-      to: '/messenger',
     });
   }
 

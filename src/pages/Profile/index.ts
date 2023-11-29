@@ -1,4 +1,4 @@
-import Block from '../../modules/utils/Block';
+import Block from '../../core/Block';
 import template from './index.hbs';
 
 import { AvatarBlock, EditorButtons } from '../../modules';
@@ -12,7 +12,9 @@ export class Profile extends Block {
   }
 
   init() {
-    (this.children.SmallSidebar = new SmallSidebar({ arrowLink: '/messenger' })),
+    (this.children.SmallSidebar = new SmallSidebar({
+      arrowLink: '/messenger',
+    })),
       (this.children.AvatarBlock = new AvatarBlock({
         nameProfile: 'Иван',
         avatar: 'assets/images/main-avatar.jpg',

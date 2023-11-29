@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import EventBus from './EventBus';
+import EventBus from '../EventBus';
 import { nanoid } from 'nanoid';
 
 export default class Block<P extends Record<string, any> = any> {

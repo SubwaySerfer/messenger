@@ -1,7 +1,8 @@
 import { ButtonSubmit, ButtonLink, Input } from '../../../../components';
-import Block from '../../../../modules/utils/Block';
+import Block from '../../../../core/Block';
 import template from './index.hbs';
-import FormValidator from '../../../../modules/utils/Validator';
+import FormValidator from '../../../../utils/Validator';
+import Router, { Routes } from '../../../../core/Router';
 
 interface LoginFormProps {
   action?: string;
@@ -54,7 +55,11 @@ export class LoginForm extends Block<LoginFormProps> {
     });
     this.children.ButtonLink = new ButtonLink({
       textLink: 'Нет аккаунта?',
-      to: '/signin',
+      events: {
+        click: () => {
+          Router.go(Routes.SignupPage);
+        },
+      },
     });
   }
 

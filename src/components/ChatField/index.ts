@@ -1,6 +1,6 @@
 import template from './index.hbs';
-import Block from '../../modules/utils/Block';
-import FormValidator from '../../modules/utils/Validator';
+import Block from '../../core/Block';
+import FormValidator from '../../utils/Validator';
 import { MessageForm } from '../../pages/Chats/MessageForm';
 
 interface ChatFieldProps {

@@ -1,5 +1,5 @@
 import '../src/sass/style.scss';
-import Block from './modules/utils/Block';
+import Block from './core/Block';
 import { loginContext, signupContext, chatsContext } from './pages';
 
 import { Profile } from './pages/Profile';
@@ -7,7 +7,7 @@ import { ChangeData } from './pages/Profile/ChangeData';
 import { ChangePassword } from './pages/Profile/ChangePassword';
 import { LoginPage } from './pages/Login';
 import { SignupPage } from './pages/Signup';
-import { Routes } from './router/constants';
+import { Routes } from './core/Router';
 import { ChatsPage } from './pages/Chats';
 import { Page404 } from './pages/Error/Page404';
 import { Page500 } from './pages/Error/Page500';

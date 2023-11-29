@@ -1,5 +1,5 @@
 import template from './index.hbs';
-import Block from '../../modules/utils/Block';
+import Block from '../../core/Block';
 
 interface ProfileInputProps {
   inputPlaceholder: string;

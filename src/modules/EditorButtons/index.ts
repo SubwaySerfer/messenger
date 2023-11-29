@@ -1,6 +1,7 @@
-import Block from '../utils/Block';
+import Block from '../../core/Block';
 import template from './index.hbs';
 
+import Router, { Routes } from '../../core/Router';
 import { ButtonLink, LineHelper } from '../../components';
 
 export class EditorButtons extends Block {
@@ -11,16 +12,28 @@ export class EditorButtons extends Block {
   init() {
     (this.children.ChangeData = new ButtonLink({
       textLink: 'Изменить данные',
-      to: '/profile-change-data',
+      events: {
+        click: () => {
+          Router.go(Routes.ChangeData);
+        },
+      },
     })),
       (this.children.ChangePassword = new ButtonLink({
         textLink: 'Изменить пароль',
-        to: '/profile-change-password',
+        events: {
+          click: () => {
+            Router.go(Routes.ChangePassword);
+          },
+        },
       })),
       (this.children.ExitButton = new ButtonLink({
         textLink: 'Выйти',
         exitMode: true,
-        to: '/',
+        events: {
+          click: () => {
+            Router.go(Routes.LoginPage);
+          },
+        },
       })),
       (this.children.LineHelper = new LineHelper({})),
       (this.children.LineHelper1 = new LineHelper({}));
