@@ -3,15 +3,15 @@ import Block from '../../../modules/utils/Block';
 import template from './index.hbs';
 import FormValidator from '../../../modules/utils/Validator';
 
-interface SigninFormProps {
+interface SignupFormProps {
   title?: string;
   events?: {
     submit: (event: HTMLFormElement) => void;
   };
 }
 
-export class SigninForm extends Block<SigninFormProps> {
-  constructor(props: SigninFormProps) {
+export class SignupForm extends Block<SignupFormProps> {
+  constructor(props: SignupFormProps) {
     super(props);
   }
 
@@ -110,13 +110,13 @@ export class SigninForm extends Block<SigninFormProps> {
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Зарегистрироваться',
         type: 'submit',
-        linkPath: '/login',
-        id: 'signinForm',
+        linkPath: '/',
+        id: 'signupForm',
         class: 'button-submit',
       }));
     this.children.ButtonLink = new ButtonLink({
       textLink: 'Войти',
-      to: '/login',
+      to: '/',
     });
   }
 

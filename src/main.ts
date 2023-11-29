@@ -1,12 +1,12 @@
 import '../src/sass/style.scss';
 import Block from './modules/utils/Block';
-import { loginContext, signinContext, chatsContext } from './pages';
+import { loginContext, signupContext, chatsContext } from './pages';
 
 import { Profile } from './pages/Profile';
 import { ChangeData } from './pages/Profile/ChangeData';
 import { ChangePassword } from './pages/Profile/ChangePassword';
 import { LoginPage } from './pages/Login';
-import { SigninPage } from './pages/Signin';
+import { SignupPage } from './pages/Signup';
 import { Routes } from './router/constants';
 import { ChatsPage } from './pages/Chats';
 import { Page404 } from './pages/Error/Page404';
@@ -26,8 +26,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     case `${origin}${Routes.LoginPage}`:
       render(new LoginPage(loginContext));
       break;
-    case `${origin}${Routes.SigninPage}`:
-      render(new SigninPage(signinContext));
+    case `${origin}${Routes.SignupPage}`:
+      render(new SignupPage(signupContext));
       break;
     case `${origin}${Routes.ChatsPage}`:
       render(new ChatsPage(chatsContext));

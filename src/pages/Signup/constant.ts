@@ -1,3 +1,3 @@
-export const signinContext = {
+export const signupContext = {
   title: 'Регистрация',
 };

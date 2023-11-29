@@ -20,7 +20,7 @@ export class EditorButtons extends Block {
       (this.children.ExitButton = new ButtonLink({
         textLink: 'Выйти',
         exitMode: true,
-        to: '/login',
+        to: '/',
       })),
       (this.children.LineHelper = new LineHelper({})),
       (this.children.LineHelper1 = new LineHelper({}));

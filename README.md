@@ -18,10 +18,10 @@ TS, JS, SCSS, Handlebars, Express, esLint, Stylelint, Prettier
 
 ## Ссылки:
 
-- [Авторизация](https://deploy--astounding-frangollo-d58fdf.netlify.app/login)
+- [Авторизация](https://deploy--astounding-frangollo-d58fdf.netlify.app/)
 - [Регистрация](https://deploy--astounding-frangollo-d58fdf.netlify.app/signin)
-- [Чаты](https://deploy--astounding-frangollo-d58fdf.netlify.app/chats)
-- [Профиль](https://deploy--astounding-frangollo-d58fdf.netlify.app/profile)
+- [Чаты](https://deploy--astounding-frangollo-d58fdf.netlify.app/messenger)
+- [Профиль](https://deploy--astounding-frangollo-d58fdf.netlify.app/settings)
 - [Редактор профиля](https://deploy--astounding-frangollo-d58fdf.netlify.app/profile-change-data)
 - [Редактор пароля](https://deploy--astounding-frangollo-d58fdf.netlify.app/profile-change-password)
 - [Ошибка 404](https://deploy--astounding-frangollo-d58fdf.netlify.app/404)

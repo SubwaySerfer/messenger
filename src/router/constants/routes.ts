@@ -1,8 +1,8 @@
 export enum Routes {
-  LoginPage = '/login',
-  SigninPage = '/signin',
-  ChatsPage = '/chats',
-  Profile = '/profile',
+  LoginPage = '/',
+  SignupPage = '/signin',
+  ChatsPage = '/messenger',
+  Profile = '/settings',
   ChangePassword = '/profile-change-password',
   ChangeData = '/profile-change-data',
   Page404 = '/page404',

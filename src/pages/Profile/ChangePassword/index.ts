@@ -21,7 +21,7 @@ export class ChangePassword extends Block {
       })),
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
-        linkPath: '/profile',
+        linkPath: '/settings',
         id: 'passwordForm',
         class: 'button-submit',
         type: 'submit',
