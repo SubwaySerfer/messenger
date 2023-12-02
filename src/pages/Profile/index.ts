@@ -5,6 +5,7 @@ import { AvatarBlock, EditorButtons } from '../../modules';
 
 import { SmallSidebar } from '../../layout/SmallSidebar';
 import { StaticData } from '../../modules/EditorData/StaticData';
+import Router, { Routes } from '../../core/Router';
 
 export class Profile extends Block {
   constructor() {
@@ -13,7 +14,11 @@ export class Profile extends Block {
 
   init() {
     (this._children.SmallSidebar = new SmallSidebar({
-      arrowLink: '/messenger',
+      events: {
+        click: () => {
+          Router.go(Routes.chats);
+        },
+      },
     })),
       (this._children.AvatarBlock = new AvatarBlock({
         nameProfile: 'Иван',

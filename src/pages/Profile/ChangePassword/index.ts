@@ -13,7 +13,11 @@ export class ChangePassword extends Block {
 
   init() {
     (this._children.SmallSidebar = new SmallSidebar({
-      arrowLink: '/settings',
+      events: {
+        click: () => {
+          Router.go(Routes.Profile);
+        },
+      },
     })),
       //TODO
       (this._children.AvatarBlock = new AvatarBlock({

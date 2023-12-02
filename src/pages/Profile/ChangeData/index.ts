@@ -13,7 +13,11 @@ export class ChangeData extends Block {
 
   init() {
     (this._children.SmallSidebar = new SmallSidebar({
-      arrowLink: '/settings',
+      events: {
+        click: () => {
+          Router.go(Routes.Profile);
+        },
+      },
     })),
       (this._children.AvatarBlock = new AvatarBlock({
         nameProfile: 'Иван',

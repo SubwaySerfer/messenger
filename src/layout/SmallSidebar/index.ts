@@ -2,7 +2,9 @@ import template from './index.hbs';
 import Block from '../../core/Block';
 
 interface SmallSidebarProps {
-  arrowLink?: string;
+  events?: {
+    click: () => void;
+  };
 }
 
 export class SmallSidebar extends Block<SmallSidebarProps> {
