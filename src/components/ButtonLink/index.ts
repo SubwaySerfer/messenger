@@ -2,9 +2,9 @@ import template from './index.hbs';
 import Block from '../../core/Block';
 
 interface ButtonLinkProps {
-  to?: string;
   textLink?: string;
   exitMode?: boolean;
+  class?: string;
   events?: {
     click: (e: Event) => void;
   };

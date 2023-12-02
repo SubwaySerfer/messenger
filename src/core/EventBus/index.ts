@@ -10,10 +10,6 @@ export default class EventBus<
     [K in MapInterface<E>]?: Handler<Args[K]>[];
   } = {};
 
-  constructor() {
-    this.listeners = {};
-  }
-
   on<Event extends MapInterface<E>>(
     event: Event,
     callback: Handler<Args[Event]>
@@ -21,6 +17,7 @@ export default class EventBus<
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
+
     this.listeners[event]?.push(callback);
   }
 
@@ -39,7 +36,7 @@ export default class EventBus<
 
   emit<Event extends MapInterface<E>>(event: Event, ...args: Args[Event]) {
     if (!this.listeners[event]) {
-      throw new Error(`Нет события: ${event}`);
+      return;
     }
 
     this.listeners[event]!.forEach((listener) => {

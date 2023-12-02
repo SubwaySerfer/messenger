@@ -1,7 +1,9 @@
 import template from './index.hbs';
 import Block from '../../core/Block';
+import { ButtonLink } from '../../components';
 
 import { ChatBlock, ChatProfiles, SearchInput } from '../../components';
+import Router, { Routes } from '../../core/Router';
 interface ChatSidebarProps {
   data: ChatProfiles;
 }
@@ -12,13 +14,22 @@ export class ChatSidebar extends Block<ChatSidebarProps> {
   }
 
   init() {
-    (this.children.SearchInput = new SearchInput({
+    (this._children.SearchInput = new SearchInput({
       input_name: 'search_input',
       input_type: 'text',
     })),
-      (this.children.ChatBlock = new ChatBlock({
+      (this._children.ChatBlock = new ChatBlock({
         chatsData: this.props.data,
       }));
+    this._children.ProfileLink = new ButtonLink({
+      textLink: 'Профиль',
+      class: 'button-link chat-sidebar__profile',
+      events: {
+        click: () => {
+          Router.go(Routes.Profile);
+        },
+      },
+    });
   }
 
   render() {

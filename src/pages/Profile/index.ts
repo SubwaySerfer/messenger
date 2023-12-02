@@ -7,21 +7,21 @@ import { SmallSidebar } from '../../layout/SmallSidebar';
 import { StaticData } from '../../modules/EditorData/StaticData';
 
 export class Profile extends Block {
-  constructor(props: unknown) {
-    super(props);
+  constructor() {
+    super({});
   }
 
   init() {
-    (this.children.SmallSidebar = new SmallSidebar({
+    (this._children.SmallSidebar = new SmallSidebar({
       arrowLink: '/messenger',
     })),
-      (this.children.AvatarBlock = new AvatarBlock({
+      (this._children.AvatarBlock = new AvatarBlock({
         nameProfile: 'Иван',
         avatar: 'assets/images/main-avatar.jpg',
         imageAlt: 'motorcycle helmet on the car roof.',
       })),
-      (this.children.EditorData = new StaticData({})),
-      (this.children.EditorButtons = new EditorButtons({}));
+      (this._children.EditorData = new StaticData()),
+      (this._children.EditorButtons = new EditorButtons());
   }
 
   render() {

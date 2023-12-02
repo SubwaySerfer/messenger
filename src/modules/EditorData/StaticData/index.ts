@@ -4,40 +4,40 @@ import template from './index.hbs';
 import { ProfileString, LineHelper } from '../../../components';
 
 export class StaticData extends Block {
-  constructor(props: unknown) {
-    super(props);
+  constructor() {
+    super({});
   }
 
   init() {
-    (this.children.EmailString = new ProfileString({
+    (this._children.EmailString = new ProfileString({
       stringName: 'Почта',
       stringValue: 'pochta@yandex.ru',
     })),
-      (this.children.LoginString = new ProfileString({
+      (this._children.LoginString = new ProfileString({
         stringName: 'Логин',
         stringValue: 'ivanivanov',
       })),
-      (this.children.FirstNameString = new ProfileString({
+      (this._children.FirstNameString = new ProfileString({
         stringName: 'Имя',
         stringValue: 'Иван',
       })),
-      (this.children.LastNameString = new ProfileString({
+      (this._children.LastNameString = new ProfileString({
         stringName: 'Фамилия',
         stringValue: 'Иванов',
       })),
-      (this.children.NicknameString = new ProfileString({
+      (this._children.NicknameString = new ProfileString({
         stringName: 'Имя в чате',
         stringValue: 'Иван',
       })),
-      (this.children.PhoneString = new ProfileString({
+      (this._children.PhoneString = new ProfileString({
         stringName: 'Телефон',
         stringValue: '+7 (909) 967 30 30',
       })),
-      (this.children.LineHelper = new LineHelper({})),
-      (this.children.LineHelper2 = new LineHelper({})),
-      (this.children.LineHelper3 = new LineHelper({})),
-      (this.children.LineHelper4 = new LineHelper({})),
-      (this.children.LineHelper5 = new LineHelper({}));
+      (this._children.LineHelper = new LineHelper({})),
+      (this._children.LineHelper2 = new LineHelper({})),
+      (this._children.LineHelper3 = new LineHelper({})),
+      (this._children.LineHelper4 = new LineHelper({})),
+      (this._children.LineHelper5 = new LineHelper({}));
   }
 
   render() {

@@ -17,8 +17,9 @@ export class ErrorBlock extends Block<ErrorBlockProps> {
   }
 
   init() {
-    this.children.ButtonLink = new ButtonLink({
+    this._children.ButtonLink = new ButtonLink({
       textLink: 'Назад к чатам',
+      class: 'button-link',
     });
   }
 

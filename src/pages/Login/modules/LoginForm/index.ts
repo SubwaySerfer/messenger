@@ -14,12 +14,12 @@ interface LoginFormProps {
 }
 
 export class LoginForm extends Block<LoginFormProps> {
-  constructor(props: LoginFormProps) {
-    super(props);
+  constructor() {
+    super({});
   }
 
   init() {
-    this.children.InputLogin = new Input({
+    this._children.InputLogin = new Input({
       input_type: 'text',
       input_label: 'Логин',
       input_id: 'login',
@@ -33,7 +33,7 @@ export class LoginForm extends Block<LoginFormProps> {
       },
     });
 
-    this.children.InputPassword = new Input({
+    this._children.InputPassword = new Input({
       input_type: 'text',
       input_label: 'Пароль',
       input_id: 'password',
@@ -47,17 +47,18 @@ export class LoginForm extends Block<LoginFormProps> {
       },
     });
 
-    this.children.ButtonSubmit = new ButtonSubmit({
+    this._children.ButtonSubmit = new ButtonSubmit({
       buttonTitle: 'Войти',
       linkPath: '/messenger',
       id: 'loginForm',
       class: 'button-submit',
     });
-    this.children.ButtonLink = new ButtonLink({
+    this._children.ButtonLink = new ButtonLink({
       textLink: 'Нет аккаунта?',
+      class: 'button-link',
       events: {
         click: () => {
-          Router.go(Routes.SignupPage);
+          Router.go(Routes.signup);
         },
       },
     });

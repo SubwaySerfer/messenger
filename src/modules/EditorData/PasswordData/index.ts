@@ -14,7 +14,7 @@ export class PasswordData extends Block<PasswordDataProps> {
   }
 
   init() {
-    (this.children.OldPasInput = new ProfileInput({
+    (this._children.OldPasInput = new ProfileInput({
       inputLabel: 'Старый пароль',
       inputPlaceholder: '•••••••••',
       input_name: 'oldPassword',
@@ -25,7 +25,7 @@ export class PasswordData extends Block<PasswordDataProps> {
         },
       },
     })),
-      (this.children.NewPasInput = new ProfileInput({
+      (this._children.NewPasInput = new ProfileInput({
         inputLabel: 'Новый пароль',
         inputPlaceholder: '•••••••••••',
         input_name: 'new_password',
@@ -37,7 +37,7 @@ export class PasswordData extends Block<PasswordDataProps> {
           },
         },
       })),
-      (this.children.RepeatNewPasInput = new ProfileInput({
+      (this._children.RepeatNewPasInput = new ProfileInput({
         inputLabel: 'Повторите новый пароль',
         inputPlaceholder: '•••••••••••',
         input_name: 'repeat_password',
@@ -49,8 +49,8 @@ export class PasswordData extends Block<PasswordDataProps> {
           },
         },
       })),
-      (this.children.LineHelper = new LineHelper({})),
-      (this.children.LineHelper1 = new LineHelper({}));
+      (this._children.LineHelper = new LineHelper({})),
+      (this._children.LineHelper1 = new LineHelper({}));
   }
 
   render() {

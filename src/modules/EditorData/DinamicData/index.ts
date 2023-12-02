@@ -14,7 +14,7 @@ export class DinamicData extends Block<DinamicDataProps> {
   }
 
   init() {
-    (this.children.EmailInput = new ProfileInput({
+    (this._children.EmailInput = new ProfileInput({
       inputLabel: 'Почта',
       inputPlaceholder: 'pochta@yandex.ru',
       input_name: 'email',
@@ -26,7 +26,7 @@ export class DinamicData extends Block<DinamicDataProps> {
         },
       },
     })),
-      (this.children.LoginInput = new ProfileInput({
+      (this._children.LoginInput = new ProfileInput({
         inputLabel: 'Логин',
         inputPlaceholder: 'ivanivanov',
         input_name: 'login',
@@ -38,7 +38,7 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this.children.FirstNameInput = new ProfileInput({
+      (this._children.FirstNameInput = new ProfileInput({
         inputLabel: 'Имя',
         inputPlaceholder: 'Иван',
         input_name: 'first_name',
@@ -50,7 +50,7 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this.children.LastNameInput = new ProfileInput({
+      (this._children.LastNameInput = new ProfileInput({
         inputLabel: 'Фамилия',
         inputPlaceholder: 'Иванов',
         input_name: 'second_name',
@@ -62,7 +62,7 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this.children.NicknameInput = new ProfileInput({
+      (this._children.NicknameInput = new ProfileInput({
         inputLabel: 'Имя в чате',
         inputPlaceholder: 'Иван',
         input_name: 'display_name',
@@ -74,7 +74,7 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this.children.PhoneInput = new ProfileInput({
+      (this._children.PhoneInput = new ProfileInput({
         inputLabel: 'Телефон',
         inputPlaceholder: '+7 (909) 967 30 30',
         input_name: 'phone',
@@ -86,11 +86,11 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this.children.LineHelper = new LineHelper({})),
-      (this.children.LineHelper2 = new LineHelper({})),
-      (this.children.LineHelper3 = new LineHelper({})),
-      (this.children.LineHelper4 = new LineHelper({})),
-      (this.children.LineHelper5 = new LineHelper({}));
+      (this._children.LineHelper = new LineHelper({})),
+      (this._children.LineHelper2 = new LineHelper({})),
+      (this._children.LineHelper3 = new LineHelper({})),
+      (this._children.LineHelper4 = new LineHelper({})),
+      (this._children.LineHelper5 = new LineHelper({}));
   }
 
   render() {

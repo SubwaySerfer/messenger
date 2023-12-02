@@ -1,6 +1,8 @@
 import '../src/sass/style.scss';
-import Block from './core/Block';
-import { loginContext, signupContext, chatsContext } from './pages';
+// import Block from './core/Block';
+// import { loginContext, signupContext, chatsContext } from './pages';
+import { authController } from './controller/AuthController';
+import { chatController } from './controller/ChatsController';
 
 import { Profile } from './pages/Profile';
 import { ChangeData } from './pages/Profile/ChangeData';
@@ -11,44 +13,41 @@ import { Routes } from './core/Router';
 import { ChatsPage } from './pages/Chats';
 import { Page404 } from './pages/Error/Page404';
 import { Page500 } from './pages/Error/Page500';
-
-function render(component: Block) {
-  const root = document.querySelector('#app');
-  root?.append(component.getContent()!);
-  component.dispatchComponentDidMount();
-}
+import Router from './core/Router';
 
 window.addEventListener('DOMContentLoaded', async () => {
-  const { href } = window.location;
-  const { origin } = window.location;
+  Router.use(Routes.login, LoginPage)
+    .use(Routes.signup, SignupPage)
+    .use(Routes.chats, ChatsPage)
+    .use(Routes.Profile, Profile)
+    .use(Routes.ChangeData, ChangeData)
+    .use(Routes.ChangePassword, ChangePassword)
+    .use(Routes.Page500, Page500)
+    .use(Routes.Page404, Page404);
 
-  switch (href) {
-    case `${origin}${Routes.LoginPage}`:
-      render(new LoginPage(loginContext));
+  let isProtectedRoute = true;
+
+  switch (window.location.pathname) {
+    case Routes.login:
+    case Routes.signup:
+      isProtectedRoute = false;
       break;
-    case `${origin}${Routes.SignupPage}`:
-      render(new SignupPage(signupContext));
-      break;
-    case `${origin}${Routes.ChatsPage}`:
-      render(new ChatsPage(chatsContext));
-      break;
-    case `${origin}${Routes.Profile}`:
-      render(new Profile({}));
-      break;
-    case `${origin}${Routes.ChangePassword}`:
-      render(new ChangePassword({}));
-      break;
-    case `${origin}${Routes.ChangeData}`:
-      render(new ChangeData({}));
-      break;
-    case `${origin}${Routes.Page404}`:
-      render(new Page404({}));
-      break;
-    case `${origin}${Routes.Page500}`:
-      render(new Page500({}));
-      break;
-    default:
-      render(new Page404({}));
+  }
+
+  try {
+    await authController.getUser();
+    await chatController.getChats();
+    //TODO
+    Router.start();
+    if (!isProtectedRoute) {
+      Router.go(Routes.chats);
+    }
+  } catch (e) {
+    console.log('Ошибка: ', e);
+    Router.start();
+
+    if (isProtectedRoute) {
+      Router.go(Routes.login);
+    }
   }
 });
-//TODO: сделать при валидацию активации пользователя, чтобы нельзя было с 404 попасть на чаты

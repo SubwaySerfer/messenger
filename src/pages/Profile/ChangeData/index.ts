@@ -7,22 +7,24 @@ import { AvatarBlock } from '../../../modules/AvatarBlock';
 import { ButtonSubmit } from '../../../components/ButtonSubmit';
 
 export class ChangeData extends Block {
-  constructor(props: unknown) {
-    super(props);
+  constructor() {
+    super({});
   }
 
   init() {
-    (this.children.SmallSidebar = new SmallSidebar({ arrowLink: '/settings' })),
-      (this.children.AvatarBlock = new AvatarBlock({
+    (this._children.SmallSidebar = new SmallSidebar({
+      arrowLink: '/settings',
+    })),
+      (this._children.AvatarBlock = new AvatarBlock({
         nameProfile: 'Иван',
         avatar: 'assets/images/main-avatar.jpg',
         imageAlt: 'motorcycle helmet on the car roof.',
         showName: 'false',
       })),
-      (this.children.DinamicData = new DinamicData({
+      (this._children.DinamicData = new DinamicData({
         formId: 'dataForm',
       })),
-      (this.children.ButtonSubmit = new ButtonSubmit({
+      (this._children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
         events: {
           click: () => {

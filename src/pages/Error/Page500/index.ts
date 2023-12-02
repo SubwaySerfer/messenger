@@ -5,17 +5,17 @@ import { ErrorBlock } from '../../../modules/ErrorBlock';
 import Router, { Routes } from '../../../core/Router';
 
 export class Page500 extends Block {
-  constructor(props: unknown) {
-    super(props);
+  constructor() {
+    super({});
   }
 
   init() {
-    this.children.ErrorBlock = new ErrorBlock({
+    this._children.ErrorBlock = new ErrorBlock({
       errorTitle: '500',
       errorDescription: 'Мы уже фиксим',
       events: {
         click: () => {
-          Router.go(Routes.ChatsPage);
+          Router.go(Routes.chats);
         },
       },
     });

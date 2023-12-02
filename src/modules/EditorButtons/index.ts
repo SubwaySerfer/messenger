@@ -5,38 +5,41 @@ import Router, { Routes } from '../../core/Router';
 import { ButtonLink, LineHelper } from '../../components';
 
 export class EditorButtons extends Block {
-  constructor(props: unknown) {
-    super(props);
+  constructor() {
+    super({});
   }
 
   init() {
-    (this.children.ChangeData = new ButtonLink({
+    (this._children.ChangeData = new ButtonLink({
       textLink: 'Изменить данные',
+      class: 'button-link',
       events: {
         click: () => {
           Router.go(Routes.ChangeData);
         },
       },
     })),
-      (this.children.ChangePassword = new ButtonLink({
+      (this._children.ChangePassword = new ButtonLink({
         textLink: 'Изменить пароль',
+        class: 'button-link',
         events: {
           click: () => {
             Router.go(Routes.ChangePassword);
           },
         },
       })),
-      (this.children.ExitButton = new ButtonLink({
+      (this._children.ExitButton = new ButtonLink({
         textLink: 'Выйти',
+        class: 'button-link',
         exitMode: true,
         events: {
           click: () => {
-            Router.go(Routes.LoginPage);
+            Router.go(Routes.login);
           },
         },
       })),
-      (this.children.LineHelper = new LineHelper({})),
-      (this.children.LineHelper1 = new LineHelper({}));
+      (this._children.LineHelper = new LineHelper({})),
+      (this._children.LineHelper1 = new LineHelper({}));
   }
 
   render() {

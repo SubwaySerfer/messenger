@@ -12,14 +12,14 @@ export class MessageForm extends Block<MessageFormProps> {
   }
 
   init() {
-    (this.children.MessageInput = new MessageInput({
+    (this._children.MessageInput = new MessageInput({
       input_type: 'text',
       input_id: 'message',
       input_name: 'message',
       input_placeholder: 'Сообщение',
       required: 'true',
     })),
-      (this.children.MessageSendBtn = new ButtonSubmit({
+      (this._children.MessageSendBtn = new ButtonSubmit({
         imageBtn: 'assets/icons/addFile.svg',
         type: 'submit',
         class: 'message-btn',
