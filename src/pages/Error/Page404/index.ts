@@ -2,7 +2,7 @@ import Block from '../../../core/Block';
 import template from './index.hbs';
 
 import { ErrorBlock } from '../../../modules/ErrorBlock';
-import Router, { Routes } from '../../../core/Router';
+import { routerApp, Routes } from '../../../core/Router';
 
 export class Page404 extends Block {
   init() {
@@ -11,7 +11,7 @@ export class Page404 extends Block {
       errorDescription: 'Не туда попали',
       events: {
         click: () => {
-          Router.go(Routes.chats);
+          routerApp.go(Routes.chats);
         },
       },
     });

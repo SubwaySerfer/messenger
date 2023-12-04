@@ -2,7 +2,7 @@ import { ButtonSubmit, ButtonLink, Input } from '../../../components';
 import Block from '../../../core/Block';
 import template from './index.hbs';
 import FormValidator from '../../../utils/Validator';
-import Router, { Routes } from '../../../core/Router';
+import { routerApp, Routes } from '../../../core/Router';
 import { authController } from '../../../controller/AuthController';
 import { checkValidityInput } from '../../../utils/checkValidityInput';
 import { ComponentPropsType } from '../../../types/componentPropsType';
@@ -120,7 +120,7 @@ export class SignupForm extends Block<SignupFormProps> {
       class: 'button-link',
       events: {
         click: () => {
-          Router.go(Routes.login);
+          routerApp.go(Routes.login);
         },
       },
     });

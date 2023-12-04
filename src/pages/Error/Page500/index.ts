@@ -2,7 +2,7 @@ import Block from '../../../core/Block';
 import template from './index.hbs';
 
 import { ErrorBlock } from '../../../modules/ErrorBlock';
-import Router, { Routes } from '../../../core/Router';
+import { routerApp, Routes } from '../../../core/Router';
 
 export class Page500 extends Block {
   constructor() {
@@ -15,7 +15,7 @@ export class Page500 extends Block {
       errorDescription: 'Мы уже фиксим',
       events: {
         click: () => {
-          Router.go(Routes.chats);
+          routerApp.go(Routes.chats);
         },
       },
     });

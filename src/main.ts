@@ -13,10 +13,11 @@ import { Routes } from './core/Router';
 import { ChatsPage } from './pages/Chats';
 import { Page404 } from './pages/Error/Page404';
 import { Page500 } from './pages/Error/Page500';
-import Router from './core/Router';
+import { routerApp } from './core/Router';
 
 window.addEventListener('DOMContentLoaded', async () => {
-  Router.use(Routes.login, LoginPage)
+  routerApp
+    .use(Routes.login, LoginPage)
     .use(Routes.signup, SignupPage)
     .use(Routes.chats, ChatsPage)
     .use(Routes.Profile, Profile)
@@ -25,29 +26,29 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Page500, Page500)
     .use(Routes.Page404, Page404);
 
-  let isProtectedRoute = true;
+  let isPrivateRoute = true;
 
-  switch (window.location.pathname) {
-    case Routes.login:
-    case Routes.signup:
-      isProtectedRoute = false;
-      break;
-  }
+  if (
+    ([Routes.login, Routes.signup] as string[]).includes(
+      window.location.pathname
+    )
+  ) {
+    isPrivateRoute = false;
 
-  try {
-    await authController.getUser();
-    await chatController.getChats();
-    //TODO
-    Router.start();
-    if (!isProtectedRoute) {
-      Router.go(Routes.chats);
-    }
-  } catch (e) {
-    console.log('Ошибка: ', e);
-    Router.start();
+    try {
+      await authController.getUser();
+      await chatController.getChats();
+      routerApp.start();
 
-    if (isProtectedRoute) {
-      Router.go(Routes.login);
+      if (!isPrivateRoute) {
+        routerApp.go(Routes.Profile);
+      }
+    } catch (e) {
+      routerApp.start();
+
+      if (isPrivateRoute) {
+        routerApp.go(Routes.login);
+      }
     }
   }
 });

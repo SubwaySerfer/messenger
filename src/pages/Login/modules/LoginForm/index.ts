@@ -2,7 +2,7 @@ import { ButtonSubmit, ButtonLink, Input } from '../../../../components';
 import Block from '../../../../core/Block';
 import template from './index.hbs';
 import FormValidator from '../../../../utils/Validator';
-import Router, { Routes } from '../../../../core/Router';
+import { routerApp, Routes } from '../../../../core/Router';
 
 interface LoginFormProps {
   action?: string;
@@ -58,7 +58,7 @@ export class LoginForm extends Block<LoginFormProps> {
       class: 'button-link',
       events: {
         click: () => {
-          Router.go(Routes.signup);
+          routerApp.go(Routes.signup);
         },
       },
     });

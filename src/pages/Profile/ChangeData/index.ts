@@ -1,6 +1,6 @@
 import template from './index.hbs';
 import Block from '../../../core/Block';
-import Router, { Routes } from '../../../core/Router';
+import { routerApp, Routes } from '../../../core/Router';
 import { SmallSidebar } from '../../../layout/SmallSidebar';
 import { DinamicData } from '../../../modules/EditorData/DinamicData';
 import { AvatarBlock } from '../../../modules/AvatarBlock';
@@ -15,7 +15,7 @@ export class ChangeData extends Block {
     (this._children.SmallSidebar = new SmallSidebar({
       events: {
         click: () => {
-          Router.go(Routes.Profile);
+          routerApp.go(Routes.Profile);
         },
       },
     })),
@@ -25,14 +25,12 @@ export class ChangeData extends Block {
         imageAlt: 'motorcycle helmet on the car roof.',
         showName: 'false',
       })),
-      (this._children.DinamicData = new DinamicData({
-        formId: 'dataForm',
-      })),
+      (this._children.DinamicData = new DinamicData(this.props)),
       (this._children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
         events: {
           click: () => {
-            Router.go(Routes.Profile);
+            routerApp.go(Routes.Profile);
           },
         },
         // linkPath: '/settings',

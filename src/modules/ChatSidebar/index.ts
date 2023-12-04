@@ -3,7 +3,7 @@ import Block from '../../core/Block';
 import { ButtonLink } from '../../components';
 
 import { ChatBlock, ChatProfiles, SearchInput } from '../../components';
-import Router, { Routes } from '../../core/Router';
+import { routerApp, Routes } from '../../core/Router';
 interface ChatSidebarProps {
   data: ChatProfiles;
 }
@@ -26,7 +26,7 @@ export class ChatSidebar extends Block<ChatSidebarProps> {
       class: 'button-link chat-sidebar__profile',
       events: {
         click: () => {
-          Router.go(Routes.Profile);
+          routerApp.go(Routes.Profile);
         },
       },
     });

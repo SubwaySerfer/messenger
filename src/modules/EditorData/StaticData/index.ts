@@ -1,37 +1,36 @@
 import Block from '../../../core/Block';
 import template from './index.hbs';
-
+import { withStore } from '../../../core/Store';
 import { ProfileString, LineHelper } from '../../../components';
 
 export class StaticData extends Block {
-  constructor() {
-    super({});
+  constructor(props: unknown) {
+    super(props);
   }
-
   init() {
     (this._children.EmailString = new ProfileString({
       stringName: 'Почта',
-      stringValue: 'pochta@yandex.ru',
+      stringValue: this.props.user,
     })),
       (this._children.LoginString = new ProfileString({
         stringName: 'Логин',
-        stringValue: 'ivanivanov',
+        stringValue: this.props.login ?? 'Не заполнено',
       })),
       (this._children.FirstNameString = new ProfileString({
         stringName: 'Имя',
-        stringValue: 'Иван',
+        stringValue: this.props.first_name ?? 'Не заполнено',
       })),
       (this._children.LastNameString = new ProfileString({
         stringName: 'Фамилия',
-        stringValue: 'Иванов',
+        stringValue: this.props.second_name ?? 'Не заполнено',
       })),
       (this._children.NicknameString = new ProfileString({
         stringName: 'Имя в чате',
-        stringValue: 'Иван',
+        stringValue: this.props.display_name ?? 'Не заполнено',
       })),
       (this._children.PhoneString = new ProfileString({
         stringName: 'Телефон',
-        stringValue: '+7 (909) 967 30 30',
+        stringValue: this.props.phone ?? 'Не заполнено',
       })),
       (this._children.LineHelper = new LineHelper({})),
       (this._children.LineHelper2 = new LineHelper({})),
@@ -44,3 +43,6 @@ export class StaticData extends Block {
     return this.compile(template, this.props);
   }
 }
+
+export const withUser = withStore((state) => ({ ...state.user }));
+console.log('trt', withStore);

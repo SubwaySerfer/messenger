@@ -1,4 +1,5 @@
 import Block from '../Block';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export enum Routes {
   login = '/',
@@ -11,59 +12,70 @@ export enum Routes {
   Page500 = '/page500',
 }
 
+export interface BlockConstructable<P extends Record<string, any> = any> {
+  new (props: P): Block<P>;
+}
+
+function renderDom(query: string, block: Block) {
+  const root = document.querySelector(query);
+  if (root === null) {
+    throw new Error(`Не найден корневой элемент ${query}`);
+  }
+  root.innerHTML = '';
+  root.appendChild(block.getContent());
+  block.dispatchComponentDidMount();
+  return root;
+}
+
 function isEqual(lhs: string, rhs: string): boolean {
   return lhs === rhs;
 }
 
-function render(query: string, block: Block) {
-  const root = document.querySelector(query);
-
-  if (root === null) {
-    throw new Error(`root not found by selector "${query}"`);
-  }
-
-  root.innerHTML = '';
-
-  root.append(block.getContent()!);
-
-  return root;
-}
-
-class Route {
-  private block: Block | null = null;
+export class Route {
+  _block: Block | null = null;
 
   constructor(
-    private pathname: string,
-    private readonly blockClass: typeof Block,
-    private readonly query: string
+    private _pathname: string,
+    private readonly _blockClass: BlockConstructable,
+    private readonly _rootQuery: string
   ) {}
 
+  navigate(pathname: string) {
+    if (this.match(pathname)) {
+      this._pathname = pathname;
+      this.render();
+    }
+  }
+
   leave() {
-    this.block = null;
+    this._block = null;
   }
 
   match(pathname: string) {
-    return isEqual(pathname, this.pathname);
+    return isEqual(pathname, this._pathname);
   }
 
   render() {
-    if (!this.block) {
-      this.block = new this.blockClass({});
+    if (!this._block) {
+      this._block = new this._blockClass({});
 
-      render(this.query, this.block);
-      return;
+      renderDom(this._rootQuery, this._block);
     }
   }
 }
 
-class Router {
+export class Router {
   private static __instance: Router;
+
   private routes: Route[] = [];
-  private currentRoute: Route | null = null;
+
+  private _currentRoute: Route | null = null;
+
   private history = window.history;
 
-  constructor(private readonly rootQuery: string) {
+  constructor(private readonly _rootQuery: string) {
     if (Router.__instance) {
+      // eslint-disable-next-line no-constructor-return
       return Router.__instance;
     }
 
@@ -72,171 +84,61 @@ class Router {
     Router.__instance = this;
   }
 
-  public use(pathname: string, block: typeof Block) {
-    const route = new Route(pathname, block, this.rootQuery);
+  use(pathname: string, block: BlockConstructable) {
+    const route = new Route(pathname, block, this._rootQuery);
+
     this.routes.push(route);
 
     return this;
   }
 
-  public start() {
+  start() {
     window.onpopstate = (event: PopStateEvent) => {
-      const target = event.currentTarget as Window;
-      this._onRoute(target.location.pathname);
+      this._onRoute((event.currentTarget as Window).location.pathname);
     };
 
     this._onRoute(window.location.pathname);
   }
 
-  private _onRoute(pathname: string) {
+  _onRoute(pathname: string) {
     const route = this.getRoute(pathname);
-
     if (!route) {
+      this.render404();
       return;
     }
 
-    if (this.currentRoute && this.currentRoute !== route) {
-      this.currentRoute.leave();
+    if (this._currentRoute && this._currentRoute !== route) {
+      this._currentRoute.leave();
     }
 
-    this.currentRoute = route;
-
+    this._currentRoute = route;
     route.render();
   }
 
-  public go(pathname: string) {
+  go(pathname: string) {
     this.history.pushState({}, '', pathname);
-
     this._onRoute(pathname);
   }
 
-  public back() {
+  back() {
     this.history.back();
   }
 
-  public forward() {
+  forward() {
     this.history.forward();
   }
 
-  private getRoute(pathname: string) {
-    console.log('pathname: ', pathname);
-    return (
-      this.routes.find((route) => route.match(pathname)) ??
-      this.routes.find((route) => route.match('/not-found'))
-    );
+  getRoute(pathname: string) {
+    return this.routes.find((route) => route.match(pathname));
+  }
+
+  render404() {
+    const route = this.getRoute(Routes.Page404);
+    if (!route) {
+      throw new Error('Неверный url страницы ошибки');
+    }
+    this.go(Routes.Page404);
   }
 }
 
-export default new Router('#app');
-
-// function render(query: string, block: Block) {
-//   const root = document.querySelector(query);
-
-//   if (root === null) {
-//     throw new Error(`root not found by selector "${query}"`);
-//   }
-
-//   root.innerHTML = '';
-//   root.append(block.getContent()!);
-//   block.dispatchComponentDidMount();
-
-//   return root;
-// }
-
-// class Route {
-//   private block: Block | null = null;
-
-//   constructor(
-//     private pathname: string,
-//     private readonly block: typeof Block,
-//     private readonly query: string
-//   ) {}
-
-//   leave() {
-//     this.block = null;
-//   }
-
-//   match(pathname: string) {
-//     return isEqual(pathname, this.pathname);
-//   }
-
-//   render() {
-//     if (!this.block) {
-//       this.block = new this.block('div', {});
-
-//       render(this.query, this.block);
-//       return;
-//     }
-//   }
-// }
-
-// class Router {
-//   private static __instance: Router;
-//   private routes: Route[] = [];
-//   private currentRoute: Route | null = null;
-//   private history = window.history;
-
-//   constructor(private readonly rootQuery: string) {
-//     if (Router.__instance) {
-//       return Router.__instance;
-//     }
-
-//     this.routes = [];
-
-//     Router.__instance = this;
-//   }
-
-//   public use(pathname: string, block: typeof Block) {
-//     const route = new Route(pathname, block, this.rootQuery);
-//     this.routes.push(route);
-
-//     return this;
-//   }
-
-//   public start() {
-//     window.onpopstate = (event: PopStateEvent) => {
-//       const target = event.currentTarget as Window;
-
-//       this._onRoute(target.location.pathname);
-//     };
-
-//     this._onRoute(window.location.pathname);
-//   }
-
-//   private _onRoute(pathname: string) {
-//     const route = this.getRoute(pathname);
-
-//     if (!route) {
-//       render(this.rootQuery, new Page404(''));
-//       return;
-//     }
-
-//     if (this.currentRoute && this.currentRoute !== route) {
-//       this.currentRoute.leave();
-//     }
-
-//     this.currentRoute = route;
-
-//     route.render();
-//   }
-
-//   public go(pathname: string) {
-//     this.history.pushState({}, '', pathname);
-
-//     this._onRoute(pathname);
-//   }
-
-//   public back() {
-//     this.history.back();
-//   }
-
-//   public forward() {
-//     this.history.forward();
-//   }
-
-//   private getRoute(pathname: string) {
-//     return this.routes.find((route) => route.match(pathname));
-//   }
-// }
-
-// export default new Router('#app');
+export const routerApp = new Router('#app');

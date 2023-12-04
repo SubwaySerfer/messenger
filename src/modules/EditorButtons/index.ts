@@ -1,7 +1,7 @@
 import Block from '../../core/Block';
 import template from './index.hbs';
-
-import Router, { Routes } from '../../core/Router';
+import { authController } from '../../controller/AuthController';
+import { routerApp, Routes } from '../../core/Router';
 import { ButtonLink, LineHelper } from '../../components';
 
 export class EditorButtons extends Block {
@@ -15,7 +15,7 @@ export class EditorButtons extends Block {
       class: 'button-link',
       events: {
         click: () => {
-          Router.go(Routes.ChangeData);
+          routerApp.go(Routes.ChangeData);
         },
       },
     })),
@@ -24,7 +24,7 @@ export class EditorButtons extends Block {
         class: 'button-link',
         events: {
           click: () => {
-            Router.go(Routes.ChangePassword);
+            routerApp.go(Routes.ChangePassword);
           },
         },
       })),
@@ -33,10 +33,15 @@ export class EditorButtons extends Block {
         class: 'button-link',
         exitMode: true,
         events: {
-          click: () => {
-            Router.go(Routes.login);
+          click: async () => {
+            await authController.logout();
           },
         },
+        // events: {
+        //   click: () => {
+        //     Router.go(Routes.login);
+        //   },
+        // },
       })),
       (this._children.LineHelper = new LineHelper({})),
       (this._children.LineHelper1 = new LineHelper({}));

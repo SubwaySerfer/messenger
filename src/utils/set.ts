@@ -1,31 +1,44 @@
-import merge from './merge';
 /* eslint-disable @typescript-eslint/no-explicit-any */
+type AnyObject = Record<string, any>;
 
+export function merge(lhs: AnyObject, rhs: AnyObject): AnyObject {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const p in rhs) {
+    // eslint-disable-next-line no-prototype-builtins
+    if (!rhs.hasOwnProperty(p)) {
+      // eslint-disable-next-line no-continue
+      continue;
+    }
 
-type Indexed<T = unknown> = {
-  [key in string]: T;
-};
+    try {
+      if (rhs[p].constructor === Object) {
+        rhs[p] = merge(lhs[p] as AnyObject, rhs[p] as AnyObject);
+      } else {
+        lhs[p] = rhs[p];
+      }
+    } catch (e) {
+      lhs[p] = rhs[p];
+    }
+  }
 
-function set(
-  object: Indexed | unknown,
+  return lhs;
+}
+
+export function set(
+  object: AnyObject | unknown,
   path: string,
   value: unknown
-): Indexed | unknown {
+): AnyObject | unknown {
   if (typeof object !== 'object' || object === null) {
     return object;
   }
 
-  if (typeof path !== 'string') {
-    throw new Error('path must be string');
-  }
-
-  const result = path.split('.').reduceRight<Indexed>(
+  const result = path.split('.').reduceRight<AnyObject>(
     (acc, key) => ({
       [key]: acc,
     }),
     value as any
   );
-  return merge(object as Indexed, result);
-}
 
-export default set;
+  return merge(object as AnyObject, result);
+}

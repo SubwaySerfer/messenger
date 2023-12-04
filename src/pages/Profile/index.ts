@@ -5,9 +5,10 @@ import { AvatarBlock, EditorButtons } from '../../modules';
 
 import { SmallSidebar } from '../../layout/SmallSidebar';
 import { StaticData } from '../../modules/EditorData/StaticData';
-import Router, { Routes } from '../../core/Router';
+import { routerApp, Routes } from '../../core/Router';
+import { withUser } from '../../modules/EditorData/StaticData';
 
-export class Profile extends Block {
+export class ProfilePage extends Block {
   constructor() {
     super({});
   }
@@ -16,7 +17,7 @@ export class Profile extends Block {
     (this._children.SmallSidebar = new SmallSidebar({
       events: {
         click: () => {
-          Router.go(Routes.chats);
+          routerApp.go(Routes.chats);
         },
       },
     })),
@@ -25,7 +26,7 @@ export class Profile extends Block {
         avatar: 'assets/images/main-avatar.jpg',
         imageAlt: 'motorcycle helmet on the car roof.',
       })),
-      (this._children.EditorData = new StaticData()),
+      (this._children.EditorData = new StaticData({})),
       (this._children.EditorButtons = new EditorButtons());
   }
 
@@ -33,3 +34,5 @@ export class Profile extends Block {
     return this.compile(template, this.props);
   }
 }
+
+export const Profile = withUser(ProfilePage);

@@ -1,5 +1,5 @@
 import { notifications } from '../utils/Notification';
-import Router from '../core/Router';
+import { routerApp } from '../core/Router';
 import { Routes } from '../core/Router';
 import {
   UpdatePasswordDTOType,
@@ -22,7 +22,7 @@ class UserController {
       await this.api.updateUser(data);
       await authController.getUser();
       notifications.addNotification('Данные успешно обновлены', 'success');
-      Router.go(Routes.Profile);
+      routerApp.go(Routes.Profile);
     } catch (error: any) {
       notifications.addNotification(error.reason, 'error');
     }
@@ -32,7 +32,7 @@ class UserController {
     try {
       await this.api.updatePassword(data);
       notifications.addNotification('Пароль успешно обновлен', 'success');
-      Router.go(Routes.Profile);
+      routerApp.go(Routes.Profile);
     } catch (error: any) {
       notifications.addNotification(error.reason, 'error');
     }
@@ -43,7 +43,7 @@ class UserController {
       const user = await this.api.updateAvatar(avatar);
       store.set('user', user);
       notifications.addNotification('Аватар успешно обновлен', 'success');
-      Router.go(Routes.Profile);
+      routerApp.go(Routes.Profile);
     } catch (error: any) {
       notifications.addNotification(error.reason, 'error');
     }

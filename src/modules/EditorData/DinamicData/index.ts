@@ -4,10 +4,9 @@ import Block from '../../../core/Block';
 import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
 import FormValidator from '../../../utils/Validator';
+import { IUser } from '../../../core/Store';
 
-interface DinamicDataProps {
-  formId: string;
-}
+interface DinamicDataProps extends IUser {}
 export class DinamicData extends Block<DinamicDataProps> {
   constructor(props: DinamicDataProps) {
     super(props);
@@ -16,7 +15,7 @@ export class DinamicData extends Block<DinamicDataProps> {
   init() {
     (this._children.EmailInput = new ProfileInput({
       inputLabel: 'Почта',
-      inputPlaceholder: 'pochta@yandex.ru',
+      inputPlaceholder: this.props.email ?? 'pochta@yandex.ru',
       input_name: 'email',
       id: 'email',
       events: {
@@ -28,7 +27,7 @@ export class DinamicData extends Block<DinamicDataProps> {
     })),
       (this._children.LoginInput = new ProfileInput({
         inputLabel: 'Логин',
-        inputPlaceholder: 'ivanivanov',
+        inputPlaceholder: this.props.login ?? 'ivanivanov',
         input_name: 'login',
         id: 'login',
         events: {
@@ -40,7 +39,7 @@ export class DinamicData extends Block<DinamicDataProps> {
       })),
       (this._children.FirstNameInput = new ProfileInput({
         inputLabel: 'Имя',
-        inputPlaceholder: 'Иван',
+        inputPlaceholder: this.props.first_name ?? 'Иван',
         input_name: 'first_name',
         id: 'firstName',
         events: {
@@ -52,7 +51,7 @@ export class DinamicData extends Block<DinamicDataProps> {
       })),
       (this._children.LastNameInput = new ProfileInput({
         inputLabel: 'Фамилия',
-        inputPlaceholder: 'Иванов',
+        inputPlaceholder: this.props.second_name ?? 'Иванов',
         input_name: 'second_name',
         id: 'secondName',
         events: {
@@ -64,7 +63,7 @@ export class DinamicData extends Block<DinamicDataProps> {
       })),
       (this._children.NicknameInput = new ProfileInput({
         inputLabel: 'Имя в чате',
-        inputPlaceholder: 'Иван',
+        inputPlaceholder: this.props.display_name ?? 'Иван',
         input_name: 'display_name',
         id: 'displayName',
         events: {

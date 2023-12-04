@@ -1,6 +1,6 @@
 import Block from '../../../core/Block';
 import template from './index.hbs';
-import Router, { Routes } from '../../../core/Router';
+import { routerApp, Routes } from '../../../core/Router';
 import { SmallSidebar } from '../../../layout/SmallSidebar';
 import { AvatarBlock } from '../../../modules/AvatarBlock';
 import { ButtonSubmit } from '../../../components/ButtonSubmit';
@@ -15,7 +15,7 @@ export class ChangePassword extends Block {
     (this._children.SmallSidebar = new SmallSidebar({
       events: {
         click: () => {
-          Router.go(Routes.Profile);
+          routerApp.go(Routes.Profile);
         },
       },
     })),
@@ -30,7 +30,7 @@ export class ChangePassword extends Block {
         buttonTitle: 'Сохранить',
         events: {
           click: () => {
-            Router.go(Routes.Profile);
+            routerApp.go(Routes.Profile);
           },
         },
         // linkPath: '/settings',

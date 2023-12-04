@@ -102,8 +102,8 @@ export default class Block<P extends Record<string, any> = any> {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  componentDidUpdate(_oldProps: P, _newProps: P) {
-    return !isEqual(_oldProps, _newProps);
+  componentDidUpdate(oldProps: P, newProps: P) {
+    return !isEqual(oldProps, newProps);
   }
 
   _render() {

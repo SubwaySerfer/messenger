@@ -2,7 +2,7 @@
 
 import Block from '../Block';
 import EventBus from '../EventBus';
-import set from '../../utils/set';
+import { set } from '../../utils/set';
 import { isEqual } from '../../utils/isEqual';
 
 export enum StoreEvents {
@@ -77,6 +77,7 @@ export class Store extends EventBus {
     set(this.state, path, value);
 
     this.emit(StoreEvents.Updated, this.getState());
+    console.log('state: ', this.state);
   }
 
   public getState() {
