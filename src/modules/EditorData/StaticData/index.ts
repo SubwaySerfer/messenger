@@ -2,10 +2,15 @@ import Block from '../../../core/Block';
 import template from './index.hbs';
 import { withStore } from '../../../core/Store';
 import { ProfileString, LineHelper } from '../../../components';
-
+import { store } from '../../../core/Store';
+import { StoreEvents } from '../../../core/Store';
 export class StaticData extends Block {
   constructor(props: unknown) {
     super(props);
+
+    store.on(StoreEvents.Updated, () => {
+      this.setProps(store.getState());
+    });
   }
   init() {
     (this._children.EmailString = new ProfileString({
@@ -45,4 +50,3 @@ export class StaticData extends Block {
 }
 
 export const withUser = withStore((state) => ({ ...state.user }));
-console.log('trt', withStore);
