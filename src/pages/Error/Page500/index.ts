@@ -10,7 +10,7 @@ export class Page500 extends Block {
   }
 
   init() {
-    this._children.ErrorBlock = new ErrorBlock({
+    this.children.ErrorBlock = new ErrorBlock({
       errorTitle: '500',
       errorDescription: 'Мы уже фиксим',
       events: {

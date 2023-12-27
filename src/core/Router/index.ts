@@ -65,6 +65,9 @@ export class Route {
 }
 
 export class Router {
+  static go(chats: Routes) {
+    throw new Error('Method not implemented.');
+  }
   private static __instance: Router;
 
   private routes: Route[] = [];

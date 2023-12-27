@@ -16,10 +16,10 @@ export class ChatsPage extends Block {
   }
 
   init() {
-    this._children.ChatSidebar = new ChatSidebar({
+    this.children.ChatSidebar = new ChatSidebar({
       data: this.props.data,
     });
-    this._children.ChatField = new ChatField({
+    this.children.ChatField = new ChatField({
       messageField: this.props.messageField,
     });
   }

@@ -12,7 +12,7 @@ export class LoginPage extends Block {
   }
 
   init() {
-    this._children.LoginForm = new LoginForm();
+    this.children.LoginForm = new LoginForm();
   }
 
   render() {

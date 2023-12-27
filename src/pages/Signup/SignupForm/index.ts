@@ -3,7 +3,7 @@ import Block from '../../../core/Block';
 import template from './index.hbs';
 import FormValidator from '../../../utils/Validator';
 import { routerApp, Routes } from '../../../core/Router';
-import { authController } from '../../../controller/AuthController';
+import { AuthController } from '../../../controller/AuthController';
 import { checkValidityInput } from '../../../utils/checkValidityInput';
 import { ComponentPropsType } from '../../../types/componentPropsType';
 
@@ -17,7 +17,7 @@ export class SignupForm extends Block<SignupFormProps> {
   }
 
   init() {
-    (this._children.InputEmail = new Input({
+    (this.children.InputEmail = new Input({
       input_type: 'email',
       input_label: 'Почта',
       input_id: 'email',
@@ -30,7 +30,7 @@ export class SignupForm extends Block<SignupFormProps> {
         },
       },
     })),
-      (this._children.InputLogin = new Input({
+      (this.children.InputLogin = new Input({
         input_type: 'text',
         input_label: 'Логин',
         input_id: 'login',
@@ -43,7 +43,7 @@ export class SignupForm extends Block<SignupFormProps> {
           },
         },
       })),
-      (this._children.InputFirstName = new Input({
+      (this.children.InputFirstName = new Input({
         input_type: 'text',
         input_label: 'Имя',
         input_id: 'firstName',
@@ -56,7 +56,7 @@ export class SignupForm extends Block<SignupFormProps> {
           },
         },
       })),
-      (this._children.InputLastName = new Input({
+      (this.children.InputLastName = new Input({
         input_type: 'text',
         input_label: 'Фамилия',
         input_id: 'lastName',
@@ -69,7 +69,7 @@ export class SignupForm extends Block<SignupFormProps> {
           },
         },
       })),
-      (this._children.InputPhone = new Input({
+      (this.children.InputPhone = new Input({
         input_type: 'tel',
         input_label: 'Телефон',
         input_id: 'phone',
@@ -82,7 +82,7 @@ export class SignupForm extends Block<SignupFormProps> {
           },
         },
       })),
-      (this._children.InputPassword1 = new Input({
+      (this.children.InputPassword1 = new Input({
         input_type: 'text',
         input_label: 'Пароль',
         input_id: 'password',
@@ -95,7 +95,7 @@ export class SignupForm extends Block<SignupFormProps> {
           },
         },
       })),
-      (this._children.InputPassword2 = new Input({
+      (this.children.InputPassword2 = new Input({
         input_type: 'text',
         input_label: 'Пароль',
         input_id: 'password_2',
@@ -108,14 +108,14 @@ export class SignupForm extends Block<SignupFormProps> {
           },
         },
       })),
-      (this._children.ButtonSubmit = new ButtonSubmit({
+      (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Зарегистрироваться',
         type: 'submit',
         linkPath: '/',
         id: 'signupForm',
         class: 'button-submit',
       }));
-    this._children.ButtonLink = new ButtonLink({
+    this.children.ButtonLink = new ButtonLink({
       textLink: 'Войти',
       class: 'button-link',
       events: {
@@ -165,7 +165,7 @@ export class SignupForm extends Block<SignupFormProps> {
         );
         if (!isCorrect) return;
 
-        await authController.registration({
+        await AuthController.register({
           email,
           phone,
           first_name,

@@ -13,7 +13,7 @@ export class ChatField extends Block<ChatFieldProps> {
   }
 
   init() {
-    this._children.MessageForm = new MessageForm({
+    this.children.MessageForm = new MessageForm({
       events: {
         submit: (e) => {
           e.preventDefault();

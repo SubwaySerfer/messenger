@@ -12,7 +12,7 @@ export class SignupPage extends Block {
   }
 
   init() {
-    this._children.SignupForm = new SignupForm();
+    this.children.SignupForm = new SignupForm();
   }
 
   render() {

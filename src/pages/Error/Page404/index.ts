@@ -6,7 +6,7 @@ import { routerApp, Routes } from '../../../core/Router';
 
 export class Page404 extends Block {
   init() {
-    this._children.ErrorBlock = new ErrorBlock({
+    this.children.ErrorBlock = new ErrorBlock({
       errorTitle: '404',
       errorDescription: 'Не туда попали',
       events: {

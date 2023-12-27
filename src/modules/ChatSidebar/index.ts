@@ -14,14 +14,14 @@ export class ChatSidebar extends Block<ChatSidebarProps> {
   }
 
   init() {
-    (this._children.SearchInput = new SearchInput({
+    (this.children.SearchInput = new SearchInput({
       input_name: 'search_input',
       input_type: 'text',
     })),
-      (this._children.ChatBlock = new ChatBlock({
+      (this.children.ChatBlock = new ChatBlock({
         chatsData: this.props.data,
       }));
-    this._children.ProfileLink = new ButtonLink({
+    this.children.ProfileLink = new ButtonLink({
       textLink: 'Профиль',
       class: 'button-link chat-sidebar__profile',
       events: {

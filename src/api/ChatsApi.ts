@@ -1,49 +1,43 @@
-import { HttpClient } from '../core/HttpClient';
+import { AddUserToChatData, CreateChatData } from '../types/apiDataTypes';
+import { API } from './api';
+import { ENDPOINTS } from '../types/endpoints';
 
-export type CreateChatDTOType = {
-  title: string;
-};
-
-export type DeleteChatDTOType = {
-  chatId: string;
-};
-
-export type AddUserToChatDTOType = {
-  users: string[];
-  chatId: string;
-};
-
-export type DeleteUserFromChatDTOType = {
-  users: string[];
-  chatId: string;
-};
-
-class ChatApi {
-  private readonly instance = new HttpClient();
+class ChatsApi extends API {
+  constructor() {
+    super(ENDPOINTS.chats);
+  }
 
   getChats() {
-    return this.instance.get('/chats');
+    return this.http.get('', { data: { limit: '20' } });
   }
 
-  getToken(id: number) {
-    return this.instance.post(`/chats/token/${id}`);
+  createChat(data: CreateChatData) {
+    return this.http.post('/', { data: data });
   }
 
-  createChat(data: CreateChatDTOType) {
-    return this.instance.post('/chats', data);
+  changeChatAvatar(data: FormData) {
+    return this.http.put('/avatar', { data: data });
   }
 
-  deleteChat(data: DeleteChatDTOType) {
-    return this.instance.delete('/chats', data);
+  deleteChat(chatId: number) {
+    return this.http.delete('', { data: { chatId: chatId } });
   }
 
-  addUserToChat(data: AddUserToChatDTOType) {
-    return this.instance.put('/chats/users', data);
+  getChatUsers(chatId: number) {
+    return this.http.get(`/${chatId}/users`);
   }
 
-  deleteUserFromChat(data: DeleteUserFromChatDTOType) {
-    return this.instance.delete('/chats/users', data);
+  addUsersToChat(data: AddUserToChatData) {
+    return this.http.put(`/users`, { data: data });
+  }
+
+  deleteUsersFromChat(data: AddUserToChatData) {
+    return this.http.delete(`/users`, { data: data });
+  }
+
+  getWSToken(chatId: number) {
+    return this.http.post(`/token/${chatId}`);
   }
 }
 
-export const chatApi = new ChatApi();
+export default new ChatsApi();

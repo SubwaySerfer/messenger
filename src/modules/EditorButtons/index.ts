@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 import template from './index.hbs';
-import { authController } from '../../controller/AuthController';
+import { AuthController } from '../../controller/AuthController';
 import { routerApp, Routes } from '../../core/Router';
 import { ButtonLink, LineHelper } from '../../components';
 
@@ -10,7 +10,7 @@ export class EditorButtons extends Block {
   }
 
   init() {
-    (this._children.ChangeData = new ButtonLink({
+    (this.children.ChangeData = new ButtonLink({
       textLink: 'Изменить данные',
       class: 'button-link',
       events: {
@@ -19,7 +19,7 @@ export class EditorButtons extends Block {
         },
       },
     })),
-      (this._children.ChangePassword = new ButtonLink({
+      (this.children.ChangePassword = new ButtonLink({
         textLink: 'Изменить пароль',
         class: 'button-link',
         events: {
@@ -28,13 +28,13 @@ export class EditorButtons extends Block {
           },
         },
       })),
-      (this._children.ExitButton = new ButtonLink({
+      (this.children.ExitButton = new ButtonLink({
         textLink: 'Выйти',
         class: 'button-link',
         exitMode: true,
         events: {
           click: async () => {
-            await authController.logout();
+            await AuthController.logout();
           },
         },
         // events: {
@@ -43,8 +43,8 @@ export class EditorButtons extends Block {
         //   },
         // },
       })),
-      (this._children.LineHelper = new LineHelper({})),
-      (this._children.LineHelper1 = new LineHelper({}));
+      (this.children.LineHelper = new LineHelper({})),
+      (this.children.LineHelper1 = new LineHelper({}));
   }
 
   render() {

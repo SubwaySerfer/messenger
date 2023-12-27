@@ -13,7 +13,7 @@ export class DinamicData extends Block<DinamicDataProps> {
   }
 
   init() {
-    (this._children.EmailInput = new ProfileInput({
+    (this.children.EmailInput = new ProfileInput({
       inputLabel: 'Почта',
       inputPlaceholder: this.props.email ?? 'pochta@yandex.ru',
       input_name: 'email',
@@ -25,7 +25,7 @@ export class DinamicData extends Block<DinamicDataProps> {
         },
       },
     })),
-      (this._children.LoginInput = new ProfileInput({
+      (this.children.LoginInput = new ProfileInput({
         inputLabel: 'Логин',
         inputPlaceholder: this.props.login ?? 'ivanivanov',
         input_name: 'login',
@@ -37,7 +37,7 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this._children.FirstNameInput = new ProfileInput({
+      (this.children.FirstNameInput = new ProfileInput({
         inputLabel: 'Имя',
         inputPlaceholder: this.props.first_name ?? 'Иван',
         input_name: 'first_name',
@@ -49,7 +49,7 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this._children.LastNameInput = new ProfileInput({
+      (this.children.LastNameInput = new ProfileInput({
         inputLabel: 'Фамилия',
         inputPlaceholder: this.props.second_name ?? 'Иванов',
         input_name: 'second_name',
@@ -61,7 +61,7 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this._children.NicknameInput = new ProfileInput({
+      (this.children.NicknameInput = new ProfileInput({
         inputLabel: 'Имя в чате',
         inputPlaceholder: this.props.display_name ?? 'Иван',
         input_name: 'display_name',
@@ -73,7 +73,7 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this._children.PhoneInput = new ProfileInput({
+      (this.children.PhoneInput = new ProfileInput({
         inputLabel: 'Телефон',
         inputPlaceholder: '+7 (909) 967 30 30',
         input_name: 'phone',
@@ -85,11 +85,11 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this._children.LineHelper = new LineHelper({})),
-      (this._children.LineHelper2 = new LineHelper({})),
-      (this._children.LineHelper3 = new LineHelper({})),
-      (this._children.LineHelper4 = new LineHelper({})),
-      (this._children.LineHelper5 = new LineHelper({}));
+      (this.children.LineHelper = new LineHelper({})),
+      (this.children.LineHelper2 = new LineHelper({})),
+      (this.children.LineHelper3 = new LineHelper({})),
+      (this.children.LineHelper4 = new LineHelper({})),
+      (this.children.LineHelper5 = new LineHelper({}));
   }
 
   render() {

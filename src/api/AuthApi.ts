@@ -1,36 +1,27 @@
-import { HttpClient } from '../core/HttpClient';
+import { API } from './api';
+import { ENDPOINTS } from '../types/endpoints';
+import { LoginData, RegisterData, UserData } from '../types/apiDataTypes';
 
-export type LoginUserDTOType = {
-  login: string;
-  password: string;
-};
-export type RegistrationUserDTOType = {
-  email: string;
-  phone: string;
-  first_name: string;
-  second_name: string;
-  login: string;
-  password: string;
-};
-
-class AuthApi {
-  private readonly instance = new HttpClient();
-
-  login(data: LoginUserDTOType) {
-    return this.instance.post('/auth/signin', data);
+class AuthApi extends API {
+  constructor() {
+    super(ENDPOINTS.auth);
   }
 
-  registration(data: RegistrationUserDTOType) {
-    return this.instance.post('/auth/signup', data);
+  register(data: RegisterData) {
+    return this.http.post('/signup', { data: data });
+  }
+
+  login(data: LoginData) {
+    return this.http.post('/signin', { data: data });
   }
 
   logout() {
-    return this.instance.post('/auth/logout');
+    return this.http.post('/logout');
   }
 
   getUser() {
-    return this.instance.get('/auth/user');
+    return this.http.get('/user') as Promise<UserData>;
   }
 }
 
-export const authApi = new AuthApi();
+export default new AuthApi();

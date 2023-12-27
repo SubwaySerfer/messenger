@@ -3,13 +3,13 @@ import Block from '../../core/Block';
 
 interface ButtonSubmitProps {
   buttonTitle?: string;
-  linkPath?: string;
   type?: string;
   imageBtn?: string;
   id?: string;
   class?: string;
   events?: {
-    click: () => void;
+    click?: (e: Event) => void;
+    submit?: (e: SubmitEvent) => void;
   };
 }
 export class ButtonSubmit extends Block {

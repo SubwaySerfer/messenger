@@ -6,7 +6,7 @@ import { AvatarBlock, EditorButtons } from '../../modules';
 import { SmallSidebar } from '../../layout/SmallSidebar';
 import { StaticData } from '../../modules/EditorData/StaticData';
 import { routerApp, Routes } from '../../core/Router';
-import { withUser } from '../../modules/EditorData/StaticData';
+import { State, withStore } from '../../core/Store';
 
 export class ProfilePage extends Block {
   constructor() {
@@ -14,25 +14,32 @@ export class ProfilePage extends Block {
   }
 
   init() {
-    (this._children.SmallSidebar = new SmallSidebar({
+    (this.children.SmallSidebar = new SmallSidebar({
       events: {
         click: () => {
           routerApp.go(Routes.chats);
         },
       },
     })),
-      (this._children.AvatarBlock = new AvatarBlock({
+      (this.children.AvatarBlock = new AvatarBlock({
         nameProfile: 'Иван',
         avatar: 'assets/images/main-avatar.jpg',
         imageAlt: 'motorcycle helmet on the car roof.',
       })),
-      (this._children.EditorData = new StaticData({})),
-      (this._children.EditorButtons = new EditorButtons());
+      (this.children.EditorData = new StaticData()),
+      (this.children.EditorButtons = new EditorButtons());
   }
 
   render() {
     return this.compile(template, this.props);
   }
 }
-
-export const Profile = withUser(ProfilePage);
+const mapStateToProps = (state: State) => ({
+  first_name: state.user?.first_name,
+  second_name: state.user?.second_name,
+  display_name: state.user?.display_name,
+  login: state.user?.login,
+  phone: state.user?.phone,
+  email: state.user?.email,
+});
+export const Profile = withStore(mapStateToProps)(ProfilePage);

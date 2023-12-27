@@ -81,7 +81,6 @@ class FormValidator {
       '.error__text'
     ) as HTMLElement;
 
-    console.log('ff', errorEl);
     errorEl.textContent = '';
 
     if (input.value.length < 3 || input.value.length > 20) {

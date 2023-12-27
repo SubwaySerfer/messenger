@@ -1,78 +1,86 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { notifications } from '../utils/Notification';
-import {
-  AddUserToChatDTOType,
-  chatApi,
-  CreateChatDTOType,
-  DeleteChatDTOType,
-  DeleteUserFromChatDTOType,
-} from '../api/ChatsApi';
-import { IChats, store } from '../core/Store';
-import { messagesController } from './MessagesController';
+import ChatsApi from '../api/ChatsApi';
+import { store } from '../core/Store';
+import { AddUserToChatData, CreateChatData } from '../types/apiDataTypes';
+import { ChatWSController } from './ChatWSController';
 
-class ChatController {
-  private readonly api: typeof chatApi;
-
-  constructor() {
-    this.api = chatApi;
+export class ChatsController {
+  static async fetchChats() {
+    try {
+      const chats = await ChatsApi.getChats();
+      store.set('chats', chats);
+    } catch (err) {
+      console.log('Ошибка получения чатов: ', err);
+    }
   }
 
-  getChats = async () => {
+  static async createChat(data: CreateChatData) {
     try {
-      const chats = await this.api.getChats();
+      await ChatsApi.createChat(data);
+      await this.fetchChats();
+    } catch (err) {
+      console.log('Ошибка создания чата: ', err);
+    }
+  }
 
-      (chats as IChats[]).map(async (chat) => {
-        const token = await this.getToken(chat.id);
+  static async changeChatAvatar(data: FormData) {
+    try {
+      await ChatsApi.changeChatAvatar(data);
+      await ChatsController.fetchChats();
+    } catch (err) {
+      console.log('Ошибка сохранения аватара: ', err);
+    }
+  }
 
-        await messagesController.connect(chat.id, token);
+  static async deleteChat(chatId: number) {
+    try {
+      await ChatsApi.deleteChat(chatId);
+      await ChatsController.fetchChats();
+      store.set('currentChat', undefined);
+    } catch (err) {
+      console.log('Ошибка удаления чата: ', err);
+    }
+  }
+
+  static async fetchChatUsers(chat: any) {
+    try {
+      const chatId = chat.id;
+      const chatUsers = await ChatsApi.getChatUsers(chatId);
+
+      store.set('currentChat', {
+        elemOptions: chat,
+        chatUsers: chatUsers,
       });
-
-      store.set('chats', chats);
-    } catch (error: any) {
-      notifications.addNotification(error.reason, 'error');
+    } catch (err) {
+      console.log('Ошибка получения пользователей чата: ', err);
     }
-  };
+  }
 
-  getToken = async (id: number) => {
-    const data = (await this.api.getToken(id)) as { token: string };
-    return data.token;
-  };
-
-  createChat = async (data: CreateChatDTOType) => {
+  static async addUsers(data: AddUserToChatData, chat: any) {
     try {
-      await this.api.createChat(data);
-      notifications.addNotification('Чат создан', 'success');
-    } catch (error: any) {
-      notifications.addNotification(error.reason, 'error');
+      await ChatsApi.addUsersToChat(data);
+      await this.fetchChatUsers(chat);
+    } catch (err) {
+      console.log('Ошибка добавления пользователей: ', err);
     }
-  };
-
-  deleteChat = async (data: DeleteChatDTOType) => {
+  }
+  static async deleteUsers(data: AddUserToChatData, chat: any) {
     try {
-      await this.api.deleteChat(data);
-      notifications.addNotification('Чат удалён', 'success');
-    } catch (error: any) {
-      notifications.addNotification(error.reason, 'error');
+      await ChatsApi.deleteUsersFromChat(data);
+      await this.fetchChatUsers(chat);
+    } catch (err) {
+      console.log('Ошибка удаления пользователей: ', err);
     }
-  };
-
-  addUserToChat = async (data: AddUserToChatDTOType) => {
+  }
+  static async fetchWSToken(chat: any) {
     try {
-      await this.api.addUserToChat(data);
-      notifications.addNotification('Пользователь добавлен в чат', 'success');
-    } catch (error: any) {
-      notifications.addNotification(error.reason, 'error');
+      await this.fetchChatUsers(chat);
+      const chatId = chat.id;
+      const { token } = (await ChatsApi.getWSToken(chatId)) as {
+        token: string;
+      };
+      ChatWSController.openWS(chatId, token);
+    } catch (err) {
+      console.log('Ошибка получения токена: ', err);
     }
-  };
-
-  deleteUserFromChat = async (data: DeleteUserFromChatDTOType) => {
-    try {
-      await this.api.deleteUserFromChat(data);
-      notifications.addNotification('Пользователь удалён из чата', 'success');
-    } catch (error: any) {
-      notifications.addNotification(error.reason, 'error');
-    }
-  };
+  }
 }
-
-export const chatController = new ChatController();

@@ -1,8 +1,6 @@
 import '../src/sass/style.scss';
-// import Block from './core/Block';
-// import { loginContext, signupContext, chatsContext } from './pages';
-import { authController } from './controller/AuthController';
-import { chatController } from './controller/ChatsController';
+import { AuthController } from './controller/AuthController';
+// import { ChatsController } from './controller/ChatsController';
 
 import { Profile } from './pages/Profile';
 import { ChangeData } from './pages/Profile/ChangeData';
@@ -28,27 +26,26 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   let isPrivateRoute = true;
 
-  if (
-    ([Routes.login, Routes.signup] as string[]).includes(
-      window.location.pathname
-    )
-  ) {
-    isPrivateRoute = false;
+  switch (window.location.pathname) {
+    case Routes.login:
+    case Routes.signup:
+      isPrivateRoute = false;
+      break;
+  }
 
-    try {
-      await authController.getUser();
-      await chatController.getChats();
-      routerApp.start();
+  try {
+    await AuthController.fetchUser();
+    // await ChatsController.fetchChats();
+    routerApp.start();
+    if (!isPrivateRoute) {
+      routerApp.go(Routes.chats);
+    }
+  } catch (e) {
+    console.log('Ошибка:', e);
+    routerApp.start();
 
-      if (!isPrivateRoute) {
-        routerApp.go(Routes.Profile);
-      }
-    } catch (e) {
-      routerApp.start();
-
-      if (isPrivateRoute) {
-        routerApp.go(Routes.login);
-      }
+    if (isPrivateRoute) {
+      routerApp.go(Routes.login);
     }
   }
 });

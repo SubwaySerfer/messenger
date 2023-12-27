@@ -12,7 +12,7 @@ export class ChangePassword extends Block {
   }
 
   init() {
-    (this._children.SmallSidebar = new SmallSidebar({
+    (this.children.SmallSidebar = new SmallSidebar({
       events: {
         click: () => {
           routerApp.go(Routes.Profile);
@@ -20,13 +20,13 @@ export class ChangePassword extends Block {
       },
     })),
       //TODO
-      (this._children.AvatarBlock = new AvatarBlock({
+      (this.children.AvatarBlock = new AvatarBlock({
         nameProfile: 'Иван',
         avatar: 'assets/images/main-avatar.jpg',
         imageAlt: 'motorcycle helmet on the car roof.',
         showName: 'false',
       })),
-      (this._children.ButtonSubmit = new ButtonSubmit({
+      (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
         events: {
           click: () => {
@@ -38,7 +38,7 @@ export class ChangePassword extends Block {
         class: 'button-submit',
         type: 'submit',
       }));
-    this._children.PasswordData = new PasswordData({
+    this.children.PasswordData = new PasswordData({
       formId: 'passwordForm',
     });
   }
