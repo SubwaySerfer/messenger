@@ -1,25 +1,41 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import EventBus from './EventBus';
+import Handlebars from 'handlebars';
+import { EventBus } from './EventBus';
+import cloneDeep from '@/utils/cloneDeep';
+import isEqual from '@/utils/isEqual';
 import { nanoid } from 'nanoid';
 
-export default class Block<P extends Record<string, any> = any> {
+class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
-    FLOW_CDU: 'flow:componeny-did-update',
   } as const;
 
-  public id = nanoid(6);
   protected props: P;
   public children: Record<string, Block | Block[]>;
   private eventBus: () => EventBus;
-  private _element: HTMLElement | null = null;
+  public id = nanoid(6);
 
-  constructor(propsWithChildren: P) {
+  private _element: HTMLElement | null | DocumentFragment = null;
+
+  private _meta: { tagName?: string; props?: object };
+
+  /** JSDoc
+   * @param {string} tagName
+   * @param {Object} props
+   * @returns {void}
+   */
+  constructor(tagName = 'div', propsWithChildren: P) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
+
+    this._meta = {
+      tagName,
+      props: props as P,
+    };
+
     this.children = children;
     this.props = this._makePropsProxy(props);
 
@@ -30,21 +46,15 @@ export default class Block<P extends Record<string, any> = any> {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  private _getChildrenAndProps(childrenAndProps: P): {
+  _getChildrenAndProps(childrenAndProps: P): {
     props: P;
-    children: Record<string, Block | Block[]>;
+    children: Record<string, Block>;
   } {
     const props: Record<string, unknown> = {};
-    const children: Record<string, Block | Block[]> = {};
+    const children: Record<string, Block> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (
-        Array.isArray(value) &&
-        value.length > 0 &&
-        value.every((v) => v instanceof Block)
-      ) {
-        children[key as string] = value;
-      } else if (value instanceof Block) {
+      if (value instanceof Block) {
         children[key as string] = value;
       } else {
         props[key] = value;
@@ -54,7 +64,7 @@ export default class Block<P extends Record<string, any> = any> {
     return { props: props as P, children };
   }
 
-  private _addEvents() {
+  _addEvents() {
     const { events = {} } = this.props as P & {
       events: Record<string, () => void>;
     };
@@ -64,7 +74,7 @@ export default class Block<P extends Record<string, any> = any> {
     });
   }
 
-  private _removeEvents() {
+  _removeEvents() {
     const { events = {} } = this.props as P & {
       events: Record<string, () => void>;
     };
@@ -74,54 +84,64 @@ export default class Block<P extends Record<string, any> = any> {
     });
   }
 
-  private _registerEvents(eventBus: EventBus) {
+  _findInputInParent(
+    parent: HTMLElement | null | DocumentFragment
+  ): HTMLInputElement | HTMLTextAreaElement | null | undefined {
+    return parent?.querySelector('input') || parent?.querySelector('textarea');
+  }
+
+  _registerEvents(eventBus: EventBus): void {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
+  _createResources() {
+    const { tagName } = this._meta;
+    this._element = tagName
+      ? document.createElement(tagName)
+      : document.createDocumentFragment();
+  }
+
   private _init() {
+    this._createResources();
+
     this.init();
+
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
   protected init() {}
 
-  private _componentDidMount() {
+  _componentDidMount() {
     this.componentDidMount();
   }
 
-  // Может переопределять пользователь, необязательно трогать (oldProps)
-  componentDidMount() {}
+  protected componentDidMount() {}
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
     Object.values(this.children).forEach((child) => {
-      if (Array.isArray(child)) {
-        child.forEach((component) => component.dispatchComponentDidMount());
-      } else {
+      if (!Array.isArray(child)) {
         child.dispatchComponentDidMount();
+      } else {
+        child.forEach((arrayChild) => {
+          arrayChild.dispatchComponentDidMount();
+        });
       }
     });
   }
 
   private _componentDidUpdate(oldProps: P, newProps: P) {
     if (this.componentDidUpdate(oldProps, newProps)) {
-      this._removeEvents();
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-      this._addEvents();
     }
   }
 
-  public dispatchComponentDidUpdate() {
-    this.eventBus().emit(Block.EVENTS.FLOW_CDU);
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected componentDidUpdate(_oldProps: P, _newProps: P) {
-    return true;
+    return !isEqual(_oldProps, _newProps);
   }
 
   setProps = (nextProps: P) => {
@@ -130,75 +150,70 @@ export default class Block<P extends Record<string, any> = any> {
     }
 
     Object.assign(this.props, nextProps);
-    this.eventBus().emit(Block.EVENTS.FLOW_CDU);
   };
 
   get element() {
     return this._element;
   }
 
-  // Может переопределять пользователь, необязательно трогать
-  protected render(): DocumentFragment {
-    return new DocumentFragment();
-  }
-
   private _render() {
     const fragment = this.render();
 
-    const newElement = fragment.firstElementChild as HTMLElement;
+    this._removeEvents();
+    (this._element as HTMLElement).innerHTML = '';
 
-    if (newElement && this._element) {
-      this._element.replaceWith(newElement);
-    }
-
-    this._element = newElement;
+    this._element!.append(fragment);
 
     this._addEvents();
   }
 
-  getContent() {
-    return this.element;
-  }
-
-  protected compile(template: (context: any) => string, context: any) {
-    // structuredClone не работает, добавить другой вариант глубокого копирования
+  protected compile(template: string, context: any): DocumentFragment {
     const contextAndStubs = { ...context };
 
     Object.entries(this.children).forEach(([name, component]) => {
-      if (Array.isArray(component)) {
-        contextAndStubs[name] = component.map(
-          (child) => `<div data-id="${child.id}"></div>`
-        );
-      } else {
-        contextAndStubs[name] = `<div data-id=${component.id}></div>`;
-      }
+      contextAndStubs[name] = `<div data-id="${
+        (component as Block).id
+      }"></div>`;
     });
 
-    const html = template(contextAndStubs);
+    const html = Handlebars.compile(template)(contextAndStubs);
     const temp = document.createElement('template');
+
     temp.innerHTML = html;
 
-    const replaceComponent = (component: Block) => {
-      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+    Object.entries(this.children).forEach(([_, components]) => {
+      const stub = temp.content.querySelector(
+        `[data-id="${(components as Block).id}"]`
+      );
 
       if (!stub) {
         return;
       }
 
-      component.getContent()?.append(...Array.from(stub.childNodes));
-
-      stub.replaceWith(component.getContent()!);
-    };
-
-    Object.entries(this.children).forEach(([, component]) => {
-      if (Array.isArray(component)) {
-        component.forEach((component) => replaceComponent(component));
+      if (!Array.isArray(components)) {
+        stub.replaceWith(components.getContent()!);
       } else {
-        replaceComponent(component);
+        const fragment = document.createDocumentFragment();
+
+        components.forEach((component) => {
+          const content = component.getContent();
+          if (content) {
+            fragment.appendChild(content);
+          }
+        });
+
+        stub.replaceWith(fragment);
       }
     });
-
     return temp.content;
+  }
+
+  protected render(): DocumentFragment {
+    return new DocumentFragment();
+  }
+
+  getContent() {
+    return this.element;
   }
 
   _makePropsProxy(props: P) {
@@ -206,35 +221,38 @@ export default class Block<P extends Record<string, any> = any> {
 
     return new Proxy(props, {
       get(target, prop: string) {
-        if (prop.startsWith('_')) {
-          throw new Error('Нет прав');
-        }
-
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
+      set(target, prop: string, value): boolean {
+        const cloneOldTarget = cloneDeep(target);
 
-      set(target, prop: string, value) {
-        // structuredClone не работает, добавить другой вариант глубокого копирования
-        const oldTarget = { ...target };
+        const newTarget = target;
 
-        target[prop as keyof P] = value;
+        newTarget[prop as keyof P] = value;
 
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, newTarget, cloneOldTarget);
         return true;
       },
-
       deleteProperty() {
-        throw new Error('Нет прав');
+        throw new Error('Нет доступа.');
       },
     });
   }
 
-  show() {
-    this.getContent()!.style.display = 'block';
+  block(tagName: string): HTMLElement | DocumentFragment {
+    return tagName
+      ? document.createElement(tagName)
+      : document.createDocumentFragment();
   }
 
-  hide() {
-    this.getContent()!.style.display = 'none';
+  show(): void {
+    (this.getContent() as HTMLElement)!.style.display = 'block';
+  }
+
+  hide(): void {
+    (this.getContent() as HTMLElement)!.style.display = 'none';
   }
 }
+
+export default Block;
