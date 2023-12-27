@@ -1,8 +1,8 @@
 {
   "name": "messenger_praktikum",
   "private": true,
-  "version": "1.0.0",
-  "type": "commonjs",
+  "version": "1.0.1",
+  "type": "module",
   "engines": {
     "node": "v18.16.1"
   },
