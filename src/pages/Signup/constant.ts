@@ -1,3 +1,3 @@
-export const signinContext = {
-  title: 'Регистрация',
-};
+// export const signinContext = {
+//   title: 'Регистрация',
+// };

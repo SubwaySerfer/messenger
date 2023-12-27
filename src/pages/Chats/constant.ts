@@ -95,7 +95,7 @@ const dataChank = {
   ],
 };
 
-export const chatsContext = {
-  messageField: true,
-  ...dataChank,
-};
+// export const chatsContext = {
+//   messageField: true,
+//   ...dataChank,
+// };
