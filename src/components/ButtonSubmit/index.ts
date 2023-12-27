@@ -1,5 +1,5 @@
-import template from './index.hbs';
-import Block from '../../modules/utils/Block';
+import { template } from './index.tmpl';
+import Block from '@/core/Block';
 
 interface ButtonSubmitProps {
   buttonTitle?: string;
@@ -14,7 +14,7 @@ interface ButtonSubmitProps {
 }
 export class ButtonSubmit extends Block {
   constructor(props: ButtonSubmitProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

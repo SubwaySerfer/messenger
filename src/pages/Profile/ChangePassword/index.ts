@@ -1,5 +1,5 @@
-import Block from '../../../modules/utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 
 import { SmallSidebar } from '../../../layout/SmallSidebar';
 import { AvatarBlock } from '../../../modules/AvatarBlock';
@@ -8,7 +8,7 @@ import { PasswordData } from '../../../modules/EditorData/PasswordData';
 
 export class ChangePassword extends Block {
   constructor(props: unknown) {
-    super(props);
+    super('div', props);
   }
 
   init() {

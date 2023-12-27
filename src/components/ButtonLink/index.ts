@@ -1,5 +1,5 @@
-import template from './index.hbs';
-import Block from '../../modules/utils/Block';
+import { template } from './index.tmpl';
+import Block from '@/core/Block';
 
 interface ButtonLinkProps {
   to?: string;
@@ -7,9 +7,9 @@ interface ButtonLinkProps {
   exitMode?: boolean;
 }
 
-export class ButtonLink extends Block {
+export class ButtonLink extends Block<ButtonLinkProps> {
   constructor(props: ButtonLinkProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

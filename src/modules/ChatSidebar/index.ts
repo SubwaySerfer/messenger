@@ -1,5 +1,5 @@
-import template from './index.hbs';
-import Block from '../utils/Block';
+import { template } from './index.tmpl';
+import Block from '@/core/Block';
 
 import { ChatBlock, ChatProfiles, SearchInput } from '../../components';
 interface ChatSidebarProps {
@@ -8,7 +8,7 @@ interface ChatSidebarProps {
 
 export class ChatSidebar extends Block<ChatSidebarProps> {
   constructor(props: ChatSidebarProps) {
-    super(props);
+    super('div', props);
   }
 
   init() {

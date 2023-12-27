@@ -1,5 +1,5 @@
-import Block from '../../modules/utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 
 interface SearchInputProps {
   input_type?: string;
@@ -9,7 +9,7 @@ interface SearchInputProps {
 
 export class SearchInput extends Block {
   constructor(props: SearchInputProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

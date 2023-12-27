@@ -1,0 +1,4 @@
+export const template = `<div class="modal-window">
+<h1 class="modal-window__title">{{title}}</h1>
+{{{SigninForm}}}
+</div>`;

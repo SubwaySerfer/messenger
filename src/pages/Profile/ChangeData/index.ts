@@ -1,5 +1,5 @@
-import template from './index.hbs';
-import Block from '../../../modules/utils/Block';
+import { template } from './index.tmpl';
+import Block from '@/core/Block';
 
 import { SmallSidebar } from '../../../layout/SmallSidebar';
 import { DinamicData } from '../../../modules/EditorData/DinamicData';
@@ -8,7 +8,7 @@ import { ButtonSubmit } from '../../../components/ButtonSubmit';
 
 export class ChangeData extends Block {
   constructor(props: unknown) {
-    super(props);
+    super('div', props);
   }
 
   init() {

@@ -1,14 +1,14 @@
-import Block from '../../modules/utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 
-import { AvatarBlock, EditorButtons } from '../../modules';
-
+import { AvatarBlock } from '@/modules/AvatarBlock';
+import { EditorButtons } from '@/modules/EditorButtons';
 import { SmallSidebar } from '../../layout/SmallSidebar';
 import { StaticData } from '../../modules/EditorData/StaticData';
 
 export class Profile extends Block {
   constructor(props: unknown) {
-    super(props);
+    super('div', props);
   }
 
   init() {

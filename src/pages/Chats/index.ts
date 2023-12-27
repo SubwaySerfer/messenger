@@ -1,8 +1,8 @@
-import template from './index.hbs';
-import { ChatSidebar } from '../../modules';
+import { template } from './index.tmpl';
+import { ChatSidebar } from '@/modules/ChatSidebar';
 
 import { ChatField } from '../../components';
-import Block from '../../modules/utils/Block';
+import Block from '@/core/Block';
 import { ChatProfiles } from '../../components';
 
 interface ChatsPageProps {
@@ -12,7 +12,7 @@ interface ChatsPageProps {
 
 export class ChatsPage extends Block<ChatsPageProps> {
   constructor(props: ChatsPageProps) {
-    super(props);
+    super('div', props);
   }
 
   init() {

@@ -1,5 +1,5 @@
-import Block from '../../../modules/utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 import { MessageInput, ButtonSubmit } from '../../../components';
 
 interface MessageFormProps {
@@ -8,7 +8,7 @@ interface MessageFormProps {
 
 export class MessageForm extends Block<MessageFormProps> {
   constructor(props: MessageFormProps) {
-    super(props);
+    super('div', props);
   }
 
   init() {

@@ -1,9 +1,9 @@
-import Block from '../../modules/utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 
 export class LineHelper extends Block {
   constructor(props: unknown) {
-    super(props);
+    super('div', props);
   }
 
   render() {

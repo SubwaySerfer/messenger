@@ -1,8 +1,8 @@
-import Block from '../../utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
-import FormValidator from '../../utils/Validator';
+import FormValidator from '../../../utils/Validator';
 
 interface PasswordDataProps {
   formId: string;
@@ -10,7 +10,7 @@ interface PasswordDataProps {
 
 export class PasswordData extends Block<PasswordDataProps> {
   constructor(props: PasswordDataProps) {
-    super(props);
+    super('div', props);
   }
 
   init() {

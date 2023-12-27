@@ -1,5 +1,5 @@
-import template from './index.hbs';
-import Block from '../../modules/utils/Block';
+import { template } from './index.tmpl';
+import Block from '@/core/Block';
 
 interface ProfileInputProps {
   inputPlaceholder: string;
@@ -14,7 +14,7 @@ interface ProfileInputProps {
 
 export class ProfileInput extends Block<ProfileInputProps> {
   constructor(props: ProfileInputProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

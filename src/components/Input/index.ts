@@ -1,5 +1,5 @@
-import Block from '../../modules/utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 
 interface InputProps {
   input_type: string;
@@ -16,7 +16,7 @@ interface InputProps {
 
 export class Input extends Block<InputProps> {
   constructor(props: InputProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

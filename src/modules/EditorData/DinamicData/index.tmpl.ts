@@ -1,0 +1,18 @@
+export const template = `<form class='editor-data' id='{{formId}}'>
+  {{{EmailInput}}}
+  {{{LineHelper}}}
+
+  {{{LoginInput}}}
+  {{{LineHelper2}}}
+
+  {{{FirstNameInput}}}
+  {{{LineHelper3}}}
+
+  {{{LastNameInput}}}
+  {{{LineHelper4}}}
+
+  {{{NicknameInput}}}
+  {{{LineHelper5}}}
+
+  {{{PhoneInput}}}
+</form>`;

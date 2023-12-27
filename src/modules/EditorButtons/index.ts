@@ -1,11 +1,11 @@
-import Block from '../utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 
 import { ButtonLink, LineHelper } from '../../components';
 
 export class EditorButtons extends Block {
   constructor(props: unknown) {
-    super(props);
+    super('div', props);
   }
 
   init() {

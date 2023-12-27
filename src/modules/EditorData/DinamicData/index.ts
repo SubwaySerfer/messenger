@@ -1,16 +1,16 @@
-import template from './index.hbs';
-import Block from '../../utils/Block';
+import { template } from './index.tmpl';
+import Block from '@/core/Block';
 
 import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
-import FormValidator from '../../utils/Validator';
+import FormValidator from '../../../utils/Validator';
 
 interface DinamicDataProps {
   formId: string;
 }
 export class DinamicData extends Block<DinamicDataProps> {
   constructor(props: DinamicDataProps) {
-    super(props);
+    super('div', props);
   }
 
   init() {

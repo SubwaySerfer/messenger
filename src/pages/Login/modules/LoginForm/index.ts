@@ -1,7 +1,7 @@
 import { ButtonSubmit, ButtonLink, Input } from '../../../../components';
-import Block from '../../../../modules/utils/Block';
-import template from './index.hbs';
-import FormValidator from '../../../../modules/utils/Validator';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
+import FormValidator from '../../../../utils/Validator';
 
 interface LoginFormProps {
   action?: string;
@@ -14,7 +14,7 @@ interface LoginFormProps {
 
 export class LoginForm extends Block<LoginFormProps> {
   constructor(props: LoginFormProps) {
-    super(props);
+    super('div', props);
   }
 
   init() {

@@ -1,5 +1,5 @@
-import Block from '../../modules/utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 import { ChatProfiles } from '..';
 
 interface ChatBlockProps {
@@ -8,7 +8,7 @@ interface ChatBlockProps {
 
 export class ChatBlock extends Block<ChatBlockProps> {
   constructor(props: ChatBlockProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

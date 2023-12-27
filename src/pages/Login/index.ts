@@ -1,14 +1,14 @@
-import Block from '../../modules/utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 import { LoginForm } from './modules';
 
 interface LoginPageProps {
   title?: string;
 }
 
-export class LoginPage extends Block<LoginPageProps> {
+export class Login extends Block<LoginPageProps> {
   constructor(props: LoginPageProps) {
-    super(props);
+    super('div', props);
   }
 
   init() {

@@ -1,6 +1,6 @@
-import template from './index.hbs';
-import Block from '../../modules/utils/Block';
-import FormValidator from '../../modules/utils/Validator';
+import { template } from './index.tmpl';
+import Block from '@/core/Block';
+import FormValidator from '../../utils/Validator';
 import { MessageForm } from '../../pages/Chats/MessageForm';
 
 interface ChatFieldProps {
@@ -9,7 +9,7 @@ interface ChatFieldProps {
 }
 export class ChatField extends Block<ChatFieldProps> {
   constructor(props: ChatFieldProps) {
-    super(props);
+    super('div', props);
   }
 
   init() {

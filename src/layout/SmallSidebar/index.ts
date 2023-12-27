@@ -1,5 +1,5 @@
-import template from './index.hbs';
-import Block from '../../modules/utils/Block';
+import { template } from './index.tmpl';
+import Block from '@/core/Block';
 
 interface SmallSidebarProps {
   arrowLink?: string;
@@ -7,7 +7,7 @@ interface SmallSidebarProps {
 
 export class SmallSidebar extends Block<SmallSidebarProps> {
   constructor(props: SmallSidebarProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

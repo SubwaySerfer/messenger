@@ -1,6 +1,5 @@
-import Block from '../../modules/utils/Block';
-import template from './index.hbs';
-
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 
 interface ProfileStringProps {
   stringName: string;
@@ -9,7 +8,7 @@ interface ProfileStringProps {
 
 export class ProfileString extends Block<ProfileStringProps> {
   constructor(props: ProfileStringProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

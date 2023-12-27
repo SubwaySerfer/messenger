@@ -1,5 +1,5 @@
-import Block from '../utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 
 interface AvatarBlockProps {
   showName?: string;
@@ -10,7 +10,7 @@ interface AvatarBlockProps {
 
 export class AvatarBlock extends Block<AvatarBlockProps> {
   constructor(props: AvatarBlockProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

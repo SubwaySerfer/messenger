@@ -1,0 +1,4 @@
+export const template = `<div class="avatar-block" showName="{{showName}}">
+  <img src="{{avatar}}" alt="{{imageAlt}}" class="avatar-block__img" />
+  <h2 class="avatar-block__title" showName="{{showName}}">{{nameProfile}}</h2>
+</div>`;

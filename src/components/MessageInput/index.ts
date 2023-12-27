@@ -1,5 +1,5 @@
-import Block from '../../modules/utils/Block';
-import template from './index.hbs';
+import Block from '@/core/Block';
+import { template } from './index.tmpl';
 
 interface MessageInputProps {
   input_type?: string;
@@ -11,7 +11,7 @@ interface MessageInputProps {
 
 export class MessageInput extends Block<MessageInputProps> {
   constructor(props: MessageInputProps) {
-    super(props);
+    super('div', props);
   }
 
   render() {

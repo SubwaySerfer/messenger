@@ -1,5 +1,5 @@
-import template from './index.hbs';
-import Block from '../utils/Block';
+import { template } from './index.tmpl';
+import Block from '@/core/Block';
 
 import { ButtonLink } from '../../components/ButtonLink';
 
@@ -10,7 +10,7 @@ interface ErrorBlockProps {
 
 export class ErrorBlock extends Block<ErrorBlockProps> {
   constructor(props: ErrorBlockProps) {
-    super(props);
+    super('div', props);
   }
 
   init() {
