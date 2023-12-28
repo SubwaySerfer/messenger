@@ -7,9 +7,9 @@ export class Login extends Block {
     super('', {});
   }
 
-  // init() {
-  //   this.children.LoginForm = new LoginForm({});
-  // }
+  init() {
+    this.children.LoginForm = new LoginForm({});
+  }
 
   render() {
     return this.compile(template, this.props);

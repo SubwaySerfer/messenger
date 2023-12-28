@@ -2,6 +2,7 @@
 @import "./abstract/placeholders";
 @import "../pages/Chats/chatsPage";
 @import "../pages/Profile/profilePage";
+@import "../pages//Login/login";
 @import "./base/modalWindow";
 @import "../layout/SmallSidebar/smallSidebar";
 @import "../components/ButtonSubmit/button-submit";
@@ -12,6 +13,7 @@
 @import "../components/LineHelper/lineHelper";
 @import "../components/ProfileString/profileString";
 @import "../components/MessageInput/message-input";
+
 @import "../modules/EditorData/editorData";
 @import "../modules/ChatSidebar/chatSidebar";
 @import "../modules/EditorButtons/editorButtons";
@@ -24,6 +26,7 @@
 
 html {
   font-size: 10px;
+  font: $main-font;
 }
 
 .test {

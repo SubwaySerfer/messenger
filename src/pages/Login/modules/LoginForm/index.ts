@@ -54,7 +54,7 @@ export class LoginForm extends Block<LoginFormProps> {
     });
     this.children.ButtonLink = new ButtonLink({
       textLink: 'Нет аккаунта?',
-      to: '/signin',
+      to: '/sign-up',
     });
   }
 
