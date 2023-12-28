@@ -8,11 +8,13 @@ import { StaticData } from '../../modules/EditorData/StaticData';
 
 export class Profile extends Block {
   constructor(props: unknown) {
-    super('div', props);
+    super('', props);
   }
 
   init() {
-    (this.children.SmallSidebar = new SmallSidebar({ arrowLink: '/chats' })),
+    (this.children.SmallSidebar = new SmallSidebar({
+      arrowLink: '/messenger',
+    })),
       (this.children.AvatarBlock = new AvatarBlock({
         nameProfile: 'Иван',
         avatar: 'assets/images/main-avatar.jpg',

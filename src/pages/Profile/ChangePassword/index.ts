@@ -8,11 +8,11 @@ import { PasswordData } from '../../../modules/EditorData/PasswordData';
 
 export class ChangePassword extends Block {
   constructor(props: unknown) {
-    super('div', props);
+    super('', props);
   }
 
   init() {
-    (this.children.SmallSidebar = new SmallSidebar({ arrowLink: '/profile' })),
+    (this.children.SmallSidebar = new SmallSidebar({ arrowLink: '/settings' })),
       (this.children.AvatarBlock = new AvatarBlock({
         nameProfile: 'Иван',
         avatar: 'assets/images/main-avatar.jpg',
@@ -21,7 +21,7 @@ export class ChangePassword extends Block {
       })),
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
-        linkPath: '/profile',
+        linkPath: '/settings',
         id: 'passwordForm',
         class: 'button-submit',
         type: 'submit',

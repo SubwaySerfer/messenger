@@ -3,16 +3,16 @@ import { ChatSidebar } from '@/modules/ChatSidebar';
 
 import { ChatField } from '../../components';
 import Block from '@/core/Block';
-import { ChatProfiles } from '../../components';
+// import { ChatProfiles } from '../../components';
 
-interface ChatsPageProps {
-  data: ChatProfiles;
-  messageField: boolean;
-}
+// interface ChatsPageProps {
+//   data: ChatProfiles;
+//   messageField: boolean;
+// }
 
-export class ChatsPage extends Block<ChatsPageProps> {
-  constructor(props: ChatsPageProps) {
-    super('div', props);
+export class ChatsPage extends Block {
+  constructor() {
+    super('', {});
   }
 
   init() {
