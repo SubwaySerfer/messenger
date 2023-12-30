@@ -5,6 +5,7 @@ interface ProfileInputProps {
   inputPlaceholder: string;
   input_name: string;
   inputLabel: string;
+  input_value: string;
   id?: string;
   events?: {
     change?: () => void;

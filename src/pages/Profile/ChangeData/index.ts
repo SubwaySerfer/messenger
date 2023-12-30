@@ -4,7 +4,8 @@ import Block from '@/core/Block';
 import { SmallSidebar } from '../../../layout/SmallSidebar';
 import { DinamicData } from '../../../modules/EditorData/DinamicData';
 import { AvatarBlock } from '../../../modules/AvatarBlock';
-import { ButtonSubmit } from '../../../components/ButtonSubmit';
+// import { ButtonSubmit } from '../../../components/ButtonSubmit';
+import { onSubmitForm } from '@/modules/forms/form';
 
 export class ChangeData extends Block {
   constructor(props: unknown) {
@@ -21,13 +22,17 @@ export class ChangeData extends Block {
       })),
       (this.children.DinamicData = new DinamicData({
         formId: 'dataForm',
-      })),
-      (this.children.ButtonSubmit = new ButtonSubmit({
-        buttonTitle: 'Сохранить',
-        linkPath: '/settings',
-        id: 'dataForm',
-        class: 'button-submit',
+        events: {
+          submit: onSubmitForm,
+        },
       }));
+    // (this.children.ButtonSubmit = new ButtonSubmit({
+    //   buttonTitle: 'Сохранить',
+    //   // linkPath: '/settings',
+    //   type: 'submit',
+    //   id: 'dataForm',
+    //   class: 'button-submit',
+    // }));
   }
 
   render() {

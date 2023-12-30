@@ -4,7 +4,7 @@ export const template = `<div class="profile-string">
     <input class="profile-string__input" 
     placeholder="{{inputPlaceholder}}"
     name="{{input_name}}" id="{{id}}"
-
+    value="{{input_value}}"
   />
   <span class="error__text">
   </label>

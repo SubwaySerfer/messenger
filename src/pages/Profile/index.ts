@@ -3,8 +3,8 @@ import { template } from './index.tmpl';
 
 import { AvatarBlock } from '@/modules/AvatarBlock';
 import { EditorButtons } from '@/modules/EditorButtons';
-import { SmallSidebar } from '../../layout/SmallSidebar';
-import { StaticData } from '../../modules/EditorData/StaticData';
+import { SmallSidebar } from '@/layout/SmallSidebar';
+import { StaticData } from '@/modules/EditorData/StaticData';
 
 export class Profile extends Block {
   constructor(props: unknown) {

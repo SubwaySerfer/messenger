@@ -4,9 +4,14 @@ import Block from '@/core/Block';
 import { LineHelper } from '../../../components/LineHelper';
 import { ProfileInput } from '../../../components/ProfileInput';
 import FormValidator from '../../../utils/Validator';
+import { store } from '@/core/Store';
+import { ButtonSubmit } from '@/components';
 
 interface DinamicDataProps {
   formId: string;
+  events: {
+    submit?: (e: SubmitEvent) => void;
+  };
 }
 export class DinamicData extends Block<DinamicDataProps> {
   constructor(props: DinamicDataProps) {
@@ -14,9 +19,11 @@ export class DinamicData extends Block<DinamicDataProps> {
   }
 
   init() {
+    const { user } = store.getState();
     (this.children.EmailInput = new ProfileInput({
       inputLabel: 'Почта',
-      inputPlaceholder: 'pochta@yandex.ru',
+      inputPlaceholder: `${user?.email}` || '',
+      input_value: `${user?.email}` || '',
       input_name: 'email',
       id: 'email',
       events: {
@@ -28,8 +35,9 @@ export class DinamicData extends Block<DinamicDataProps> {
     })),
       (this.children.LoginInput = new ProfileInput({
         inputLabel: 'Логин',
-        inputPlaceholder: 'ivanivanov',
+        inputPlaceholder: `${user?.login}` || '',
         input_name: 'login',
+        input_value: `${user?.login}` || '',
         id: 'login',
         events: {
           focusout: (event) => {
@@ -40,8 +48,9 @@ export class DinamicData extends Block<DinamicDataProps> {
       })),
       (this.children.FirstNameInput = new ProfileInput({
         inputLabel: 'Имя',
-        inputPlaceholder: 'Иван',
+        inputPlaceholder: `${user?.first_name}` || '',
         input_name: 'first_name',
+        input_value: `${user?.first_name}` || '',
         id: 'firstName',
         events: {
           focusout: (event) => {
@@ -52,8 +61,9 @@ export class DinamicData extends Block<DinamicDataProps> {
       })),
       (this.children.LastNameInput = new ProfileInput({
         inputLabel: 'Фамилия',
-        inputPlaceholder: 'Иванов',
+        inputPlaceholder: `${user?.second_name}` || '',
         input_name: 'second_name',
+        input_value: `${user?.second_name}` || '',
         id: 'secondName',
         events: {
           focusout: (event) => {
@@ -64,8 +74,9 @@ export class DinamicData extends Block<DinamicDataProps> {
       })),
       (this.children.NicknameInput = new ProfileInput({
         inputLabel: 'Имя в чате',
-        inputPlaceholder: 'Иван',
+        inputPlaceholder: `${user?.display_name}` || '',
         input_name: 'display_name',
+        input_value: `${user?.display_name}` || '',
         id: 'displayName',
         events: {
           focusout: (event) => {
@@ -76,8 +87,9 @@ export class DinamicData extends Block<DinamicDataProps> {
       })),
       (this.children.PhoneInput = new ProfileInput({
         inputLabel: 'Телефон',
-        inputPlaceholder: '+7 (909) 967 30 30',
+        inputPlaceholder: `${user?.phone}` || '',
         input_name: 'phone',
+        input_value: `${user?.phone}` || '',
         id: 'phone',
         events: {
           focusout: (event) => {
@@ -86,7 +98,14 @@ export class DinamicData extends Block<DinamicDataProps> {
           },
         },
       })),
-      (this.children.LineHelper = new LineHelper({})),
+      (this.children.ButtonSubmit = new ButtonSubmit({
+        buttonTitle: 'Сохранить',
+        // linkPath: '/settings',
+        type: 'submit',
+        id: 'dataForm',
+        class: 'button-submit',
+      }));
+    (this.children.LineHelper = new LineHelper({})),
       (this.children.LineHelper2 = new LineHelper({})),
       (this.children.LineHelper3 = new LineHelper({})),
       (this.children.LineHelper4 = new LineHelper({})),
