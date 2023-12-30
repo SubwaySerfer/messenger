@@ -3,6 +3,9 @@ import Block from '@/core/Block';
 
 interface ButtonLinkProps {
   to?: string;
+  events?: {
+    click: (e: Event) => void;
+  };
   textLink?: string;
   exitMode?: boolean;
 }

@@ -1,4 +1,4 @@
-export const template = `<form class="form" id="signinForm">
+export const template = `<form class="form" id="register" data-type="register">
   <div class="modal-inputs">
     {{{InputEmail}}}
     {{{InputLogin}}}

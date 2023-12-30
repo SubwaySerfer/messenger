@@ -6,7 +6,7 @@ import FormValidator from '../../../utils/Validator';
 interface SignupFormProps {
   title?: string;
   events?: {
-    submit: (event: HTMLFormElement) => void;
+    submit: (e: SubmitEvent) => void;
   };
 }
 
@@ -110,8 +110,8 @@ export class SignupForm extends Block<SignupFormProps> {
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Зарегистрироваться',
         type: 'submit',
-        linkPath: '/',
-        id: 'signinForm',
+        // linkPath: '/',
+        id: 'signupForm',
         class: 'button-submit',
       }));
     this.children.ButtonLink = new ButtonLink({

@@ -1,6 +1,7 @@
 import Block from '@/core/Block';
 import { template } from './index.tmpl';
 import { SignupForm } from './SignupForm';
+import { onSubmitForm } from '@/modules/forms/form';
 
 export class SignupPage extends Block {
   constructor() {
@@ -8,7 +9,11 @@ export class SignupPage extends Block {
   }
 
   init() {
-    this.children.SigninForm = new SignupForm({});
+    this.children.SigninForm = new SignupForm({
+      events: {
+        submit: onSubmitForm,
+      },
+    });
   }
 
   render() {

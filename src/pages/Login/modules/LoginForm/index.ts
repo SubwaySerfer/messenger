@@ -1,13 +1,13 @@
-import { ButtonSubmit, ButtonLink, Input } from '../../../../components';
+import { ButtonSubmit, ButtonLink, Input } from '@/components';
 import Block from '@/core/Block';
 import { template } from './index.tmpl';
-import FormValidator from '../../../../utils/Validator';
+import FormValidator from '@/utils/Validator';
 
 interface LoginFormProps {
   action?: string;
   method?: string;
   events?: {
-    submit: (event: HTMLFormElement) => void;
+    submit: (e: SubmitEvent) => void;
     focusout?: (event: HTMLFormElement) => void;
   };
 }
@@ -48,9 +48,16 @@ export class LoginForm extends Block<LoginFormProps> {
 
     this.children.ButtonSubmit = new ButtonSubmit({
       buttonTitle: 'Войти',
-      linkPath: '/messenger',
+      // linkPath: '/messenger',
       id: 'loginForm',
       class: 'button-submit',
+      type: 'submit',
+      // events: {
+      //   submit: (e) => {
+      //     e.preventDefault;
+      //     console.log('jj');
+      //   },
+      // },
     });
     this.children.ButtonLink = new ButtonLink({
       textLink: 'Нет аккаунта?',

@@ -2,6 +2,7 @@ import Block from '@/core/Block';
 import { template } from './index.tmpl';
 
 import { ButtonLink, LineHelper } from '../../components';
+import { AuthController } from '@/controller/AuthController';
 
 export class EditorButtons extends Block {
   constructor(props: unknown) {
@@ -20,7 +21,11 @@ export class EditorButtons extends Block {
       (this.children.ExitButton = new ButtonLink({
         textLink: 'Выйти',
         exitMode: true,
-        to: '/',
+        events: {
+          click: () => {
+            AuthController.logout();
+          },
+        },
       })),
       (this.children.LineHelper = new LineHelper({})),
       (this.children.LineHelper1 = new LineHelper({}));

@@ -9,7 +9,8 @@ interface ButtonSubmitProps {
   id?: string;
   class?: string;
   events?: {
-    click: () => void;
+    click?: () => void;
+    submit: (e: SubmitEvent) => void;
   };
 }
 export class ButtonSubmit extends Block {
