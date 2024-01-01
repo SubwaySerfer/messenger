@@ -5,20 +5,22 @@ import { AvatarBlock } from '@/modules/AvatarBlock';
 import { EditorButtons } from '@/modules/EditorButtons';
 import { SmallSidebar } from '@/layout/SmallSidebar';
 import { StaticData } from '@/modules/EditorData/StaticData';
-
+import { setAvatar } from '@/modules/AvatarBlock';
+import { store } from '@/core/Store';
 export class Profile extends Block {
   constructor(props: unknown) {
     super('', props);
   }
 
   init() {
+    const { user } = store.getState();
+    console.log(user?.first_name);
     (this.children.SmallSidebar = new SmallSidebar({
       arrowLink: '/messenger',
     })),
       (this.children.AvatarBlock = new AvatarBlock({
-        nameProfile: 'Иван',
-        avatar: 'assets/images/main-avatar.jpg',
-        imageAlt: 'motorcycle helmet on the car roof.',
+        imageUrl: setAvatar(user?.avatar).imageUrl,
+        nameProfile: user?.first_name,
       })),
       (this.children.EditorData = new StaticData({})),
       (this.children.EditorButtons = new EditorButtons({}));
