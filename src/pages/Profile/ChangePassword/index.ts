@@ -3,8 +3,8 @@ import { template } from './index.tmpl';
 
 import { SmallSidebar } from '../../../layout/SmallSidebar';
 import { AvatarBlock } from '../../../modules/AvatarBlock';
-import { ButtonSubmit } from '../../../components/ButtonSubmit';
 import { PasswordData } from '../../../modules/EditorData/PasswordData';
+import { onSubmitForm } from '@/modules/forms/form';
 
 export class ChangePassword extends Block {
   constructor(props: unknown) {
@@ -19,16 +19,19 @@ export class ChangePassword extends Block {
         imageAlt: 'motorcycle helmet on the car roof.',
         showName: 'false',
       })),
-      (this.children.ButtonSubmit = new ButtonSubmit({
-        buttonTitle: 'Сохранить',
-        linkPath: '/settings',
-        id: 'passwordForm',
-        class: 'button-submit',
-        type: 'submit',
+      // (this.children.ButtonSubmit = new ButtonSubmit({
+      //   buttonTitle: 'Сохранить',
+      //   linkPath: '/settings',
+      //   id: 'passwordForm',
+      //   class: 'button-submit',
+      //   type: 'submit',
+      // }));
+      (this.children.PasswordData = new PasswordData({
+        formId: 'passwordForm',
+        events: {
+          submit: onSubmitForm,
+        },
       }));
-    this.children.PasswordData = new PasswordData({
-      formId: 'passwordForm',
-    });
   }
 
   render() {

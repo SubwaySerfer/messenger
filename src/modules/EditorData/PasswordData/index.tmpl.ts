@@ -1,4 +1,4 @@
-export const template = `<form class="editor-data" id="{{formId}}">
+export const template = `<form class="editor-data" id="{{formId}}" data-type="user-change-password">
   {{{ OldPasInput }}}
   {{{ LineHelper }}}
 
@@ -8,4 +8,6 @@ export const template = `<form class="editor-data" id="{{formId}}">
 
   {{{ RepeatNewPasInput }}}
 
+
+  {{{ButtonSubmit}}}
 </form>`;

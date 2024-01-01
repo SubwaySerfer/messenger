@@ -5,6 +5,5 @@ export const template = `<div class="profile-wrapper">
     {{{ AvatarBlock }}}
     {{{ DinamicData }}}
 
-    // {{{ ButtonSubmit }}}
   </div>
 </div>`;

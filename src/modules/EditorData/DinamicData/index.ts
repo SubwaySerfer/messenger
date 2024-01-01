@@ -1,9 +1,9 @@
 import { template } from './index.tmpl';
 import Block from '@/core/Block';
 
-import { LineHelper } from '../../../components/LineHelper';
-import { ProfileInput } from '../../../components/ProfileInput';
-import FormValidator from '../../../utils/Validator';
+import { LineHelper } from '@/components/LineHelper';
+import { ProfileInput } from '@/components/ProfileInput';
+import FormValidator from '@/utils/Validator';
 import { store } from '@/core/Store';
 import { ButtonSubmit } from '@/components';
 
@@ -100,7 +100,6 @@ export class DinamicData extends Block<DinamicDataProps> {
       })),
       (this.children.ButtonSubmit = new ButtonSubmit({
         buttonTitle: 'Сохранить',
-        // linkPath: '/settings',
         type: 'submit',
         id: 'dataForm',
         class: 'button-submit',
