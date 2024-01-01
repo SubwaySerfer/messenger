@@ -3,7 +3,7 @@ import Block from '@/core/Block';
 
 interface ButtonSubmitProps {
   buttonTitle?: string;
-  linkPath?: string;
+  // linkPath?: string;
   type?: string;
   imageBtn?: string;
   id?: string;
